@@ -6,5 +6,5 @@
  * Programming Project - College Management System - FacultyStack Class
  */
 
-public class FacultyStack {
+public class FacultyStack<T> extends NodeBasedStack<T> {
 }
