@@ -1,3 +1,5 @@
+import java.lang.reflect.Method;
+
 /**
  * @authors Christopher Bergsveinsson,
  * @version 11/6/2025
@@ -7,4 +9,22 @@
  */
 
 public class CollegeManagementSystem {
+    NodeBasedStack<Faculty> FacultyStack = new NodeBasedStack<>();
+    ArrayBasedList<CollegeClass> CollegeClasses;
+    String AdminPassword, AdminUsername;
+
+    public CollegeManagementSystem() {
+        super();
+    }
+
+    public CollegeManagementSystem(int sizeOfCollegeClassList, String AdminPassword, String AdminUsername) {
+        ArrayBasedList<CollegeClass> CollegeClasses = new ArrayBasedList<>(sizeOfCollegeClassList);
+        this.AdminPassword = AdminPassword;
+        this.AdminUsername = AdminUsername;
+    }
+
+    public void manageClasses() {} // will ask the admin for options to modify, view details, and add or cancel classes
+
+    public void manageFaculty() {} // will ask the admin for options to hire, fire, and view details of faculty members and their credits
+
 }
