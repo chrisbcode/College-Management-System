@@ -1,5 +1,5 @@
 /**
- * @authors Christopher Bergsveinsson,
+ * @authors Christopher Bergsveinsson, Anh Vo
  * @version 11/6/2025
  * CSC 223 - Anwar Ahmad
  * Every Tuesday and  Thursday 9:35am → 11:35am
