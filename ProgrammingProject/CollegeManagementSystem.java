@@ -27,4 +27,12 @@ public class CollegeManagementSystem {
 
     public void manageFaculty() {} // will ask the admin for options to hire, fire, and view details of faculty members and their credits
 
+    public boolean searchStudents(Student student) {
+        return false;
+    }
+
+    public boolean searchFaculty(Faculty faculty) {
+        return false;
+    }
+
 }
