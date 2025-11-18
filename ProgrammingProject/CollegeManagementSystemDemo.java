@@ -8,6 +8,7 @@
 
 public class CollegeManagementSystemDemo {
     public static void main(String[] args){
+        // 2d nodebasedlist for faculty and student info?
 
     }
 }
