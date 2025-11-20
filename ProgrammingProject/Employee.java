@@ -52,10 +52,10 @@ public class Employee extends Person
         this.hireDate = new MyDate(1, 1, 2000); // default
     }
 
-    public Employee(String name, int employeeId,
+    public Employee(String firstName, String lastName, String DOB, int employeeId,
                     String username, String password,
                     MyDate hireDate) {
-        super(name);
+        super(firstName, lastName, DOB);
         this.employeeId = employeeId;
         this.username = username;
         this.password = password;

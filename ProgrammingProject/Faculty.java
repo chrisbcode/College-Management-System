@@ -6,7 +6,7 @@
  * Programming Project - College Management System - Faculty Class
  * Updated: 11.18.25 - 12:11am - not finish
  * 
- * Example that i make change to the code, then hit Ctrl + S or you can
+ * Example that i make change to the code, then hit Ctrl + S or you can..., then go to Git Desktop
  */
 
 public class Faculty extends Employee
@@ -26,9 +26,9 @@ public class Faculty extends Employee
         this.sectionCount = 0;
     }
 
-    public Faculty(String name, int employeeId, String username, String password,
+    public Faculty(String firstName, String lastName, String DOB, int employeeId, String username, String password,
                    Employee.MyDate hireDate, String department) {
-        super(name, employeeId, username, password, hireDate);
+        super(firstName, lastName, DOB, employeeId, username, password, hireDate);
         this.department = department;
         this.assignedSections = new CourseSection[MAX_SECTIONS];
         this.sectionCount = 0;
@@ -79,6 +79,7 @@ public class Faculty extends Employee
         return true;
     }
 
+    /**
     public int getTotalCredits() {
         int total = 0;
         for (int i = 0; i < sectionCount; i++) {
@@ -89,6 +90,7 @@ public class Faculty extends Employee
         }
         return total;
     }
+        **/
 
 
     @Override
