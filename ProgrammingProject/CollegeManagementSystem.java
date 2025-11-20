@@ -30,9 +30,7 @@ public class CollegeManagementSystem {
 
 
     public void reassignPTFaculty(Faculty faculty) {
-        if(faculty.isFullTime()) {
-            ;
-        }
+        ;
     }
 
 

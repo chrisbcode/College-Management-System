@@ -109,25 +109,5 @@ public class NodeBasedList<D> extends Object implements ListInterface<D>
                 return null;
             }
     }
-    
-    public boolean login(String username, String password) {
-    boolean areTheyEqual = false;
-
-    Node currentNode = list;  
-
-    while (currentNode != null) { 
-        Student s = (Student)currentNode.getData();  
-
-        if (s.getUsername().equals(username) && s.getPassword().equals(password)) {
-            areTheyEqual = true;  
-        }
-
-        currentNode = currentNode.getLink(); 
-    }
-
-    return areTheyEqual;
-    }
-    
-    
 
 }

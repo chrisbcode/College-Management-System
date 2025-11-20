@@ -13,25 +13,26 @@ public class Faculty extends Employee
 {
     //instance variable
     private String department;
-    private CourseSection[] assignedSections;
     private int sectionCount;
+    private String username;
+    private String password;
+    private int facultyID;
 
     private static final int MAX_SECTIONS = 20;
 
     //constructors
     public Faculty() {
-        super(); // calls Employee()
+        super();
         this.department = "";
-        this.assignedSections = new CourseSection[MAX_SECTIONS];
         this.sectionCount = 0;
     }
 
-    public Faculty(String firstName, String lastName, String DOB, int employeeId, String username, String password,
-                   Employee.MyDate hireDate, String department) {
-        super(firstName, lastName, DOB, employeeId, username, password, hireDate);
+    public Faculty(String newName, String birthDate, int employeeID, String username, String password, String department) {
+        super(newName, birthDate, employeeID);
         this.department = department;
-        this.assignedSections = new CourseSection[MAX_SECTIONS];
         this.sectionCount = 0;
+        this.username = username;
+        this.password = password;
     }
 
     /**
@@ -47,50 +48,13 @@ public class Faculty extends Employee
         return department;
     }
 
-    public int getSectionCount() { //return number of faculty was assigned
-        return sectionCount;
+    public int getCourses() { //return number of faculty was assigned
+        return 0;
     }
 
-    public CourseSection getSectionAt(int index) {//return the current section at index, in the list of sections falcuty was assigned
-        if (index >= 0 && index < sectionCount) {
-            return assignedSections[index];
-        }
-        else {
-            return null;
-        }
+    public int getCredits() {
+        return 0;
     }
-
-
-    //check do falculty themselve can add or remove section by themselve
-    //add section
-    public boolean addSection(CourseSection section) {
-        for (int i = 0; i < sectionCount; i++) { //check for duplicate
-            if (assignedSections[i] == section) {
-                return false; //already assigned section found
-            }
-        }
-
-        if (sectionCount >= MAX_SECTIONS) { //falculty can't be hold more than 20 sections
-            return false; //cannot add more
-        }
-
-        assignedSections[sectionCount] = section;
-        sectionCount++;
-        return true;
-    }
-
-    /**
-    public int getTotalCredits() {
-        int total = 0;
-        for (int i = 0; i < sectionCount; i++) {
-            CourseSection s = assignedSections[i];
-            if (s != null && s.getCourse() != null) {
-                total += s.getCourse().getCreditHours();
-            }
-        }
-        return total;
-    }
-        **/
 
 
     @Override
@@ -105,10 +69,7 @@ public class Faculty extends Employee
         boolean areTheyEqual = false;
         if (otherObject != null && otherObject instanceof Faculty) { //if  there is an object and it is a person
             Faculty otherFaculty = (Faculty)otherObject; //object type casting,new ref of type person
-            if(//this.getName().equals(otherFaculty.getName()) &&
-                //this.getEmployeeId() == otherFaculty.getEmployeeId() &&
-                //this.department.equals(otherFaculty.department)
-                    super.equals(otherObject) && this.department.equals(otherFaculty.department)) { //check if tthe two namem are equal
+            if(this.getName().equals(otherFaculty.getName()) && this.getEmployeeId() == otherFaculty.getEmployeeId() && this.department.equals(otherFaculty.getDepartment()) && super.equals(otherObject) && this.department.equals(otherFaculty.department)) {
                 areTheyEqual = true;
             }
         }

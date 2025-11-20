@@ -55,26 +55,23 @@ public class Person extends Object
 
 }
 **/
-public class Person extends Object
+public class Person
 {
     
-    private String name; 
-    private String lastName;
+    private String name;
     private String birthdate;
 
     public Person() {
         super();
-        name = "";
-        lastName = "";
-        birthdate = "";
-        
+    }
+
+    public Person(String name) {
+        this.name = name;
     }
     
-    
-    public Person(String newName, String newLastName, String newBirthdate) { 
+    public Person(String newName, String newBirthdate) {
         super();
         name = newName;
-        lastName = newLastName;
         birthdate = newBirthdate;
     }
 
@@ -87,14 +84,6 @@ public class Person extends Object
         return name;
     }
     
-    public void setLastName(String newLastName) {
-        lastName = newLastName;
-    }
-    
-    public String getLastName() {
-        return lastName;
-    }
-    
     public void setBirthdate(String newBirthdate) {
         birthdate = newBirthdate;
     }
@@ -104,7 +93,7 @@ public class Person extends Object
     }
     
     public String toString(){
-        return "Name: " + name + " Last name " + lastName + " Birth date " + birthdate;
+        return "Name: " + name + " | Birth date: " + birthdate;
     }
     
        @Override
@@ -112,7 +101,7 @@ public class Person extends Object
         boolean areTheyEqual = false; 
         if(otherObject != null && otherObject instanceof Person) { //if there is an object and it is a person
             Person otherPerson = (Person)otherObject; //object type casting, new reference of type person
-            if(this.name.equals(otherPerson.name) && this.lastName.equals(otherPerson.lastName) && this.birthdate.equals(otherPerson.birthdate)) { //check if the two names are equal
+            if(this.name.equals(otherPerson.name) && this.birthdate.equals(otherPerson.birthdate)) { //check if the two names are equal
                 areTheyEqual = true;
             }
         }
