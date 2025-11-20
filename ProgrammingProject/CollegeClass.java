@@ -47,7 +47,7 @@ public class CollegeClass {
     }
 
 
-    private void setProfessor(Faculty Professor) { // private because the reflect method used in the CMS shows admin clearance
+    public void setProfessor(Faculty Professor) {
         this.Professor = Professor;
     }
 

@@ -1,5 +1,3 @@
-import java.lang.reflect.Method;
-
 /**
  * @authors Christopher Bergsveinsson,
  * @version 11/6/2025
@@ -11,27 +9,46 @@ import java.lang.reflect.Method;
 public class CollegeManagementSystem {
     NodeBasedStack<Faculty> FacultyStack = new NodeBasedStack<>();
     ArrayBasedList<CollegeClass> CollegeClasses;
-    String AdminPassword, AdminUsername;
+    String adminPassword, adminUsername;
 
     public CollegeManagementSystem() {
         super();
     }
 
-    public CollegeManagementSystem(int sizeOfCollegeClassList, String AdminPassword, String AdminUsername) {
+    public CollegeManagementSystem(int sizeOfCollegeClassList, String adminPassword, String adminUsername) {
         ArrayBasedList<CollegeClass> CollegeClasses = new ArrayBasedList<>(sizeOfCollegeClassList);
-        this.AdminPassword = AdminPassword;
-        this.AdminUsername = AdminUsername;
+        this.adminPassword = adminPassword;
+        this.adminUsername = adminUsername;
     }
 
-    public void manageClasses() {} // will ask the admin for options to modify, view details, and add or cancel classes
+    public void manageClasses(String adminPassword) {
+    }
 
-    public void manageFaculty() {} // will ask the admin for options to hire, fire, and view details of faculty members and their credits
+    public void manageFaculty(String adminPassword) {} // will ask the admin for options to hire, fire, and view details of faculty members and their credits
 
-    public boolean searchStudents(Student student) {
+    
+    public void reassignFaculty(String adminPassword) {}
+
+    public void reassignPTFaculty(Faculty faculty) {
+        if(faculty.isFullTime()) {
+            ;
+        }
+    }
+
+
+    public boolean searchStudents(Student student) { // for admin
         return false;
     }
 
-    public boolean searchFaculty(Faculty faculty) {
+    public boolean searchStudents(String username, String password) {
+        return false;
+    }
+
+    public boolean searchFaculty(Faculty faculty) { // for admin
+        return false;
+    }
+
+    public boolean searchFaculty(String username, String password) {
         return false;
     }
 

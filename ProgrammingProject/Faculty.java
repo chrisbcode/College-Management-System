@@ -9,6 +9,7 @@
 public class Faculty extends Employee {
 
     private String department;
+    private boolean fullTime;
 
     public Faculty() {
         super();
@@ -18,8 +19,9 @@ public class Faculty extends Employee {
         super(name);
     }
 
-    public Faculty(String name, int employeeId) {
+    public Faculty(String name, int employeeId, boolean fullTime) {
         super(name, employeeId);
+        this.fullTime = fullTime;
     }
 
     public Faculty(String name, int employeeId, String department) {
@@ -27,6 +29,13 @@ public class Faculty extends Employee {
         this.department = department;
     }
 
+    public boolean isFullTime() {
+        return fullTime;
+    }
+
+    public void setFullTime(boolean fullTime) {
+        this.fullTime = fullTime;
+    }
 
     public void setDepartment(String department) {
         this.department = department;
@@ -47,5 +56,6 @@ public class Faculty extends Employee {
         Faculty faculty = (Faculty) obj;
         return (this.getDepartment().equals(faculty.getDepartment())) && (this.getEmployeeId() == faculty.getEmployeeId()) && (this.getName().equals(faculty.getName()));
     }
+
 
 }
