@@ -21,13 +21,13 @@ public class CollegeManagementSystem {
         this.adminUsername = adminUsername;
     }
 
-    public void manageClasses(String adminPassword) {
+    public void manageClasses(String adminUsername, String adminPassword) {
     }
 
-    public void manageFaculty(String adminPassword) {} // will ask the admin for options to hire, fire, and view details of faculty members and their credits
+    public void manageFaculty(String adminUsername, String adminPassword) {} // will ask the admin for options to hire, fire, and view details of faculty members and their credits
 
-    
-    public void reassignFaculty(String adminPassword) {}
+    public void reassignFaculty(String adminUsername, String adminPassword) {}
+
 
     public void reassignPTFaculty(Faculty faculty) {
         if(faculty.isFullTime()) {
