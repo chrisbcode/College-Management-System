@@ -5,6 +5,8 @@
  * Every Tuesday and  Thursday 9:35am → 11:35am
  * Programming Project - College Management System - Faculty Class
  * Updated: 11.18.25 - 12:11am - not finish
+ * 
+ * Example that i make change to the code, then hit Ctrl + S or you can
  */
 
 public class Faculty extends Employee
