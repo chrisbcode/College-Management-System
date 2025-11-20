@@ -97,6 +97,11 @@ public class ArrayBasedList<D> implements ListInterface<D>
         }
         return allItems;
     }
+
+    public int size() {
+        return numberOfItems;
+    }
+
     public Iterator<D> iterator() {
         return new ArrayBasedListIterator();
     }
