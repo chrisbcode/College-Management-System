@@ -59,13 +59,6 @@ public class Student extends Person implements Comparable<Student>
     return result;
     }
 
-
-    result = this.getName().compareTo(other.getName());
-    if (result != 0) {
-    return result;
-    }
-
-
     return this.getBirthdate().compareTo(other.getBirthdate());
     }
     }
