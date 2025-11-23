@@ -14,6 +14,8 @@ public class CollegeClass {
     int ClassID;
     int SectionNumber;
     String ClassTime; // ex: "9:35am"
+    int sizeOfClass;
+    int sizeofWaitlist;
 
     public CollegeClass() {
         super();
@@ -25,6 +27,10 @@ public class CollegeClass {
         this.ClassID = ClassID;
         this.SectionNumber = SectionNumber;
         this.ClassTime = ClassTime;
+
+        this.sizeOfClass = sizeOfClass;
+        this.sizeofWaitlist = sizeOfWaitlist;
+
         StudentsInClass = new ArrayBasedList<>(sizeOfClass);
         StudentWaitlist = new ClassWaitlist<>(sizeOfWaitlist);
     }
@@ -35,8 +41,13 @@ public class CollegeClass {
         this.StudentWaitlist = StudentWaitlist;
     }
 
+    public CollegeClass(Student[] StudentsInClass, Student[] StudentWaitlist) {
+        this.StudentsInClass = new ArrayBasedList<>(StudentsInClass);
+        this.StudentWaitlist = new ClassWaitlist<>(StudentWaitlist);
+    }
 
-    private void setProfessor(Faculty Professor) { // private because the reflect method used in the CMS shows admin clearance
+
+    public void setProfessor(Faculty Professor) {
         this.Professor = Professor;
     }
 
@@ -48,15 +59,38 @@ public class CollegeClass {
         setProfessor(Professor);
     }
 
-    public void addStudent() {}
+    public void addStudent(Student student) {
+        if(StudentsInClass.size() < sizeOfClass) {
+            StudentsInClass.add(student);
+        }
+        else if(StudentWaitlist.size() < sizeofWaitlist) {
+            try {
+                StudentWaitlist.enqueue(student);
+            } catch (QueueFullException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+        else {
+            System.out.println("Class and waitlist full!");
+        }
+    }
 
-    public void removeStudentFromClass() {}
+    public void removeStudentFromClass(Student student) {
+        System.out.println(StudentsInClass.remove(student) + " removed");
 
-    public void removeStudentFromWaitlist() {}
+    }
+
+    public void removeStudentFromWaitlist() {
+        try {
+            System.out.println(StudentWaitlist.dequeue() +  " removed");
+        } catch (QueueEmptyException e) {
+            System.out.println(e.getMessage());
+        }
+    }
 
     @Override
     public String toString() {
-        return null;
+        return "In Class:\n" + this.StudentsInClass.toString() + "\nIn Waitlist:\n" + this.StudentWaitlist.toString();
     }
 
 }

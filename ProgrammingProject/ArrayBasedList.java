@@ -1,5 +1,4 @@
-import java.util.Iterator;
-import java.util.NoSuchElementException;
+
 
 /**
  * @authors Christopher Bergsveinsson,
@@ -9,6 +8,9 @@ import java.util.NoSuchElementException;
  * Programming Project - College Management System - ArrayBasedList Class
  *
  */
+
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 public class ArrayBasedList<D> implements ListInterface<D>
 {
@@ -24,11 +26,15 @@ public class ArrayBasedList<D> implements ListInterface<D>
     public ArrayBasedList(int size) {
         super();
         if(size > 0) {
+            numberOfItems = size;
             list = (D[])new Object[size];
         }
-        else {
-            list = (D[])new Object[5];
-        }
+    }
+
+    public ArrayBasedList(D[] list) {
+        super();
+        this.list = list;
+        numberOfItems = list.length;
     }
 
     @Override
@@ -39,9 +45,7 @@ public class ArrayBasedList<D> implements ListInterface<D>
         }
         else {
             D [] largerList = (D[])new Object[list.length + list.length];
-            for(int index = 0; index < list.length; index++) {
-                largerList[index] = list[index];
-            }
+            System.arraycopy(list, 0, largerList, 0, list.length);
             largerList[numberOfItems] = item;
             numberOfItems++;
             list = largerList;
@@ -91,17 +95,22 @@ public class ArrayBasedList<D> implements ListInterface<D>
 
     @Override
     public String toString() {
-        String allItems = "";
+        StringBuilder allItems = new StringBuilder();
         for(int index = 0; index < numberOfItems; index++) {
-            allItems = allItems + "\n" + list[index].toString();
+            allItems.append(list[index]).append("\n");
         }
-        return allItems;
+        return allItems.toString();
     }
+
+    public int size() {
+        return numberOfItems;
+    }
+
     public Iterator<D> iterator() {
         return new ArrayBasedListIterator();
     }
 
-    private class ArrayBasedListIterator extends Object implements Iterator<D> {
+    private class ArrayBasedListIterator implements Iterator<D> {
 
         private int currentLocation;
 
@@ -125,4 +134,9 @@ public class ArrayBasedList<D> implements ListInterface<D>
             }
         }
     }
+
+    public D getList(int index){
+            return list[index];
+    }
+    
 }

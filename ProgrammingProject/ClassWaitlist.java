@@ -8,7 +8,7 @@
 
 public class ClassWaitlist<E> implements QueueInterface<E> {
 
-    E[] items;
+    private E[] items;
 
     public ClassWaitlist() {
         super();
@@ -16,6 +16,11 @@ public class ClassWaitlist<E> implements QueueInterface<E> {
 
     public ClassWaitlist(int size) {
         items = (E[]) new Object[size];
+    }
+
+    public ClassWaitlist(E[] items) {
+        super();
+        this.items = items;
     }
 
     public int size() { // method to eliminate redundant length checks

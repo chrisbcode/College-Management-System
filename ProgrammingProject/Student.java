@@ -6,35 +6,23 @@
  * Programming Project - College Management System - Student Class
  */
 
-public class Student extends Person
+public class Student extends Person implements Comparable<Student>
 {
     private int studentId;
+    String birthDate;
 
     public Student() {
         super();
         studentId = 0;
     }
+
     public Student(String newName) {
         super(newName);
-        studentId = 0;
     }
-    public Student(String newName, int newStudentId) {
-        super(newName);
-        if(newStudentId > 0) {
-            studentId = newStudentId;
-        }
-        else {
-            studentId = 0;
-        }
-    }
-    public Student(int newStudentId) {
-        super();
-        if(newStudentId > 0) {
-            studentId = newStudentId;
-        }
-        else {
-            studentId = 0;
-        }
+
+    public Student(String newName, int newStudentId, String birthDate) {
+        super(newName, birthDate);
+        this.studentId = newStudentId;
     }
 
     public void setStudentId(int newStudentId) {
@@ -62,4 +50,15 @@ public class Student extends Person
         }
         return areTheyEqual;
     }
-}
+
+    @Override
+    public int compareTo(Student other) {
+
+    int result = this.getName().compareTo(other.getName());
+    if (result != 0) {
+    return result;
+    }
+
+    return this.getBirthdate().compareTo(other.getBirthdate());
+    }
+    }

@@ -4,49 +4,57 @@
  * CSC 223 - Anwar Ahmad
  * Every Tuesday and  Thursday 9:35am → 11:35am
  * Programming Project - College Management System - Employee Class
+ * Updated: 11.18.25 - 12:11am
  */
 
-public class Employee extends Person {
+public class Employee extends Person
+{
 
-    private int employeeId;
+    //instance variable
+    private int employeeId; //camel caseing
 
+    //constructors
     public Employee() {
         super();
-        employeeId = 0;
+        this.employeeId = 0;
     }
 
-    public Employee(String name) {
-        super(name);
-    }
-
-    public Employee(int employeeId) {
+    public Employee(String newName, String birthDate, int employeeId) {
+        super(newName, birthDate);
         this.employeeId = employeeId;
     }
 
-    public Employee(String name, int employeeId) {
-        super(name);
-        this.employeeId = employeeId;
-    }
-
-
-    public void setEmployeeId(int employeeId) {
-        this.employeeId = employeeId;
+    //setters and getters
+    public void setEmployeeId(int newEmployeeId) {
+        if (newEmployeeId > 0) {
+            employeeId = newEmployeeId;
+        }
     }
 
     public int getEmployeeId() {
         return employeeId;
     }
 
-
     @Override
     public String toString() {
-        return super.getName() + " " + employeeId;
+        return super.toString() + " | Employee ID: " + employeeId;
     }
 
     @Override
-    public boolean equals(Object obj) {
-        Employee employee = (Employee) obj;
-        return (this.getEmployeeId() == employee.getEmployeeId()) && (this.getName().equals(employee.getName()));
+    public boolean equals(Object otherObject) {
+        boolean areTheyEqual = false;
+        if (otherObject != null && otherObject instanceof Employee) { //if  there is an object and it is a person
+            Employee otherEmployee = (Employee)otherObject; //object type casting,new ref of type person
+            if(this.getName().equals(otherEmployee.getName()) && //super.equals(otherObject)
+                    this.employeeId == otherEmployee.employeeId) { //check if id are equal
+                areTheyEqual = true;
+            }
+        }
+        return areTheyEqual;
     }
+
+
+
+
 
 }
