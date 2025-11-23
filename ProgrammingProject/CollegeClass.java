@@ -99,17 +99,8 @@ public class CollegeClass {
         }
     }
 
-    public void removeStudentFromClass(Student student) {
-        System.out.println(StudentsInClass.remove(student) + " removed");
-
-    }
-
-    public void removeStudentFromWaitlist() {
-        try {
-            System.out.println(StudentWaitlist.dequeue() +  " removed");
-        } catch (QueueEmptyException e) {
-            System.out.println(e.getMessage());
-        }
+    public void removeStudent(Student student) {
+        
     }
 
     @Override
