@@ -19,8 +19,8 @@ public class Employee extends Person
         this.employeeId = 0;
     }
 
-    public Employee(String newName, String birthDate, int employeeId) {
-        super(newName, birthDate);
+    public Employee(String newName, int employeeId) {
+        super(newName);
         this.employeeId = employeeId;
     }
 
@@ -43,10 +43,9 @@ public class Employee extends Person
     @Override
     public boolean equals(Object otherObject) {
         boolean areTheyEqual = false;
-        if (otherObject != null && otherObject instanceof Employee) { //if  there is an object and it is a person
-            Employee otherEmployee = (Employee)otherObject; //object type casting,new ref of type person
-            if(this.getName().equals(otherEmployee.getName()) && //super.equals(otherObject)
-                    this.employeeId == otherEmployee.employeeId) { //check if id are equal
+        if (otherObject instanceof Employee otherEmployee) {
+            if(this.getName().equals(otherEmployee.getName()) &&
+                    this.employeeId == otherEmployee.employeeId) {
                 areTheyEqual = true;
             }
         }

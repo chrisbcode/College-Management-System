@@ -5,7 +5,7 @@
  * @author (your name)
  * @version (a version number or a date)
  */
-public class Tree<E extends Comparable> extends Object implements TreeInterface<E>
+public class Tree<E extends Comparable> implements TreeInterface<E>
 {
     private TreeNode<E> root;
     private boolean found;

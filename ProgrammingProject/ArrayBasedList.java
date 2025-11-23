@@ -97,7 +97,7 @@ public class ArrayBasedList<D> implements ListInterface<D>
     public String toString() {
         StringBuilder allItems = new StringBuilder();
         for(int index = 0; index < numberOfItems; index++) {
-            allItems.append(list[index]).append("\n");
+            allItems.append(index + 1).append(" ").append(list[index]).append("\n");
         }
         return allItems.toString();
     }

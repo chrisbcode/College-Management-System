@@ -1,3 +1,9 @@
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.Scanner;
+import java.util.TreeSet;
+
 /**
  * @authors Christopher Bergsveinsson,
  * @version 11/6/2025
@@ -9,6 +15,10 @@
 public class CollegeManagementSystem {
     NodeBasedStack<Faculty> FacultyStack = new NodeBasedStack<>();
     ArrayBasedList<CollegeClass> CollegeClasses;
+
+    NodeBasedList<Faculty> FacultyList;
+    NodeBasedList<Student> StudentList;
+
     String adminPassword, adminUsername;
 
     public CollegeManagementSystem() {
@@ -21,33 +31,120 @@ public class CollegeManagementSystem {
         this.adminUsername = adminUsername;
     }
 
-    public void manageClasses(String adminUsername, String adminPassword) {
+
+    // system
+    public boolean validateAdmin(String adminUsername, String adminPassword) {
+        return adminUsername.equals(adminUsername) && adminPassword.equals(adminPassword);
     }
 
-    public void manageFaculty(String adminUsername, String adminPassword) {} // will ask the admin for options to hire, fire, and view details of faculty members and their credits
-
-    public void reassignFaculty(String adminUsername, String adminPassword) {}
-
-
-    public void reassignPTFaculty(Faculty faculty) {
-        ;
-    }
-
-
-    public boolean searchStudents(Student student) { // for admin
+    public boolean validateFaculty(String facultyUsername, String facultyPassword) {
         return false;
     }
 
-    public boolean searchStudents(String username, String password) {
+    public boolean validateStudent(String studentUsername, String studentPassword) {
         return false;
     }
 
-    public boolean searchFaculty(Faculty faculty) { // for admin
+    public boolean searchStudents(String fullName, LocalDate birthDate) { // for admin
         return false;
     }
 
-    public boolean searchFaculty(String username, String password) {
+    public boolean searchFaculty(String fullName, String password) {
         return false;
     }
+
+    public Student returnStudent(String username, String password) {
+        return null;
+    }
+
+    public Faculty returnFaculty(String username, String password) {
+        return null;
+    }
+
+
+    //admin
+    public void manageClasses() {
+
+        Scanner keyboard = new Scanner(System.in);
+        int option;
+
+        System.out.println("""
+                    \nEnter 1 to add a course
+                    Enter 2 to remove a course
+                    Enter 3 to view the course list
+                    Enter 4 to view the course details""");
+        option = keyboard.nextInt();
+
+    }
+
+    public void manageFaculty() {
+        Scanner keyboard = new Scanner(System.in);
+        int option;
+
+        System.out.println("""
+                    \nEnter 1 to hire a faculty member
+                    Enter 2 to let go of a faculty member
+                    Enter 3 assign a member of the faculty to a class
+                    Enter 4 to reassign a member of the faculty to a class""");
+        option = keyboard.nextInt();
+
+    }
+
+    //faculty
+    public void reassignPTFaculty() {
+        Scanner keyboard = new Scanner(System.in);
+        int option;
+
+        option = keyboard.nextInt();
+    }
+
+    public void viewYourClassesToTeach(Faculty faculty) {
+        faculty.getCollegeClasses();
+    }
+
+    //student
+
+    public void manageYourClasses(Student student) {
+
+        Scanner keyboard = new Scanner(System.in);
+        int option;
+
+        if(!StudentList.find(student)) {
+            StudentList.add(student);
+            System.out.print("You successfully applied and entered this college! Your assigned student ID is " + student.getStudentId());
+        }
+
+        boolean loggedIn = true;
+        while(loggedIn) {
+            System.out.println("""
+                    \nEnter 1 to add a course to your class list
+                    Enter 2 to remove a course from your class list
+                    Enter 3 to view your class list
+                    Enter 4 to log off""");
+            option = keyboard.nextInt();
+
+            if(option == 1) {
+                System.out.println(CollegeClasses);
+                System.out.println("Which college class would you like to add to your class list?");
+                option = keyboard.nextInt();
+
+
+            }
+            else if(option == 2) {
+                ;
+            }
+            else if(option == 3) {
+                ;
+            }
+            else if(option == 4) {
+                loggedIn = false;
+            }
+            else {
+                System.out.println("Invalid option!");
+            }
+        }
+    }
+
+
 
 }

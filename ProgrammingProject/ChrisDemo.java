@@ -6,7 +6,7 @@ public class ChrisDemo {
 
         CollegeClass collegeClass = new CollegeClass(students, students2);
 
-        System.out.println(collegeClass.toString());
+        System.out.println(collegeClass.toString2());
 
     }
 }

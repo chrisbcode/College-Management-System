@@ -1,3 +1,5 @@
+import java.time.LocalDate;
+
 /**
  * @authors Christopher Bergsveinsson,
  * @version 11/6/2025
@@ -9,7 +11,9 @@
 public class Student extends Person implements Comparable<Student>
 {
     private int studentId;
-    String birthDate;
+    NodeBasedList<CollegeClass> collegeClasses;
+    String username;
+    String password;
 
     public Student() {
         super();
@@ -20,8 +24,25 @@ public class Student extends Person implements Comparable<Student>
         super(newName);
     }
 
-    public Student(String newName, int newStudentId, String birthDate) {
+    public Student(String newName, int newStudentId, LocalDate birthDate) {
         super(newName, birthDate);
+        this.studentId = newStudentId;
+    }
+
+    public Student(String newName, int newStudentId, LocalDate birthDate, String username, String password) {
+        super(newName, birthDate);
+        this.studentId = newStudentId;
+        this.username = username;
+        this.password = password;
+    }
+
+    public Student(String newName, int newStudentId,  int year, int month, int day) {
+        super(newName, year, month, day);
+        this.studentId = newStudentId;
+    }
+
+    public Student(String newName, int newStudentId) {
+        super(newName);
         this.studentId = newStudentId;
     }
 
@@ -30,8 +51,17 @@ public class Student extends Person implements Comparable<Student>
             studentId = newStudentId;
         }
     }
+
     public int getStudentId() {
         return studentId;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public String getPassword() {
+        return password;
     }
 
     @Override
@@ -41,8 +71,7 @@ public class Student extends Person implements Comparable<Student>
     @Override
     public boolean equals(Object otherObject) {
         boolean areTheyEqual = false;
-        if(otherObject != null && otherObject instanceof Student) {
-            Student otherStudent = (Student)otherObject; //object type casting
+        if(otherObject instanceof Student otherStudent) {
             if(super.equals(otherObject) &&
                     this.studentId == otherStudent.studentId) {
                 areTheyEqual = true;
@@ -59,6 +88,6 @@ public class Student extends Person implements Comparable<Student>
     return result;
     }
 
-    return this.getBirthdate().compareTo(other.getBirthdate());
+    return this.getBirthDate().compareTo(other.getBirthDate());
     }
     }

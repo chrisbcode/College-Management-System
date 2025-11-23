@@ -1,3 +1,5 @@
+import java.time.LocalDate;
+
 /**
  * @authors Christopher Bergsveinsson,
  * @version 11/6/2025
@@ -13,10 +15,10 @@ public class Faculty extends Employee
 {
     //instance variable
     private String department;
-    private int sectionCount;
     private String username;
     private String password;
     private int facultyID;
+    private NodeBasedList<CollegeClass> collegeClasses;
 
     private static final int MAX_SECTIONS = 20;
 
@@ -24,20 +26,14 @@ public class Faculty extends Employee
     public Faculty() {
         super();
         this.department = "";
-        this.sectionCount = 0;
     }
 
-    public Faculty(String newName, String birthDate, int employeeID, String username, String password, String department) {
-        super(newName, birthDate, employeeID);
+    public Faculty(String newName, int employeeID, String username, String password, String department) {
+        super(newName, employeeID);
         this.department = department;
-        this.sectionCount = 0;
         this.username = username;
         this.password = password;
     }
-
-    /**
-     * 6 unique constructors
-     */
 
     //setter & getters
     public void setDepartment(String facultyDepartment) {
@@ -56,12 +52,18 @@ public class Faculty extends Employee
         return 0;
     }
 
+    public void addClass(CollegeClass collegeClass) {
+        collegeClasses.add(collegeClass);
+    }
+
+    public NodeBasedList<CollegeClass> getCollegeClasses() {
+        return collegeClasses;
+    }
 
     @Override
     public String toString() {
         return super.toString()
-                + ", Dept: " + department
-                + ", Sections: " + sectionCount;
+                + ", Dept: " + department;
     }
 
     @Override

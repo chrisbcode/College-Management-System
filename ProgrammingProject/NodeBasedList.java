@@ -54,6 +54,17 @@ public class NodeBasedList<D> extends Object implements ListInterface<D>
         }
     return removed;
     }
+
+    @Override
+    public String toString() {
+        Node currentNode = list;
+        StringBuilder stackInfo = new StringBuilder();
+        while(currentNode != null) {
+            stackInfo.append(currentNode.getData().toString()).append("\n");
+            currentNode = currentNode.getLink();
+        }
+        return stackInfo.toString();
+    }
     
     private class Node extends Object {
         

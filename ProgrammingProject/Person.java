@@ -1,3 +1,5 @@
+import java.time.LocalDate;
+
 /**
  * @authors Christopher Bergsveinsson, Anh Vo, Maryam
  * @version 11/6/2025
@@ -7,59 +9,11 @@
  * Updated: 11.19.25 - 11:21pm
  */
 
-/**
-public class Person extends Object
-{
-    //instance variable
-    private String name;
-
-
-    //default constructor
-    public Person() {
-        super(); //call the default constructor from parent class(Object)
-        name = "";
-    }
-
-    //Overloading constructor
-    public Person(String newName) { //newName is a parameter
-        super();
-        name = newName;
-    }
-
-    //getters and setters
-    public void setName(String newName) {
-        name = newName;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    @Override
-    public String toString() {
-        return "Name: " + name;
-    }
-
-    @Override
-    public boolean equals(Object otherObject) {
-        boolean areTheyEqual = false;
-        if (otherObject != null && otherObject instanceof Person) { //if  there is an object and it is a person
-            Person otherPerson = (Person)otherObject; //object type casting,new ref of type person
-            if(this.name.equals(otherPerson.name)) { //check if tthe two namem are equal
-                areTheyEqual = true;
-            }
-        }
-        return areTheyEqual;
-    }
-
-
-}
-**/
 public class Person
 {
     
     private String name;
-    private String birthdate;
+    private LocalDate birthdate;
 
     public Person() {
         super();
@@ -68,11 +22,16 @@ public class Person
     public Person(String name) {
         this.name = name;
     }
+
+    public Person(String name, LocalDate birthdate) {
+        this.name = name;
+        this.birthdate = birthdate;
+    }
     
-    public Person(String newName, String newBirthdate) {
+    public Person(String newName, int year, int month, int day) {
         super();
         name = newName;
-        birthdate = newBirthdate;
+        birthdate = LocalDate.of(year, month, day);
     }
 
     
@@ -84,11 +43,11 @@ public class Person
         return name;
     }
     
-    public void setBirthdate(String newBirthdate) {
-        birthdate = newBirthdate;
+    public void setBirthDate(int year,  int month, int day) {
+        birthdate = LocalDate.of(year, month, day);
     }
     
-    public String getBirthdate() {
+    public LocalDate getBirthDate() {
         return birthdate;
     }
     
@@ -99,9 +58,8 @@ public class Person
        @Override
     public boolean equals(Object otherObject) {
         boolean areTheyEqual = false; 
-        if(otherObject != null && otherObject instanceof Person) { //if there is an object and it is a person
-            Person otherPerson = (Person)otherObject; //object type casting, new reference of type person
-            if(this.name.equals(otherPerson.name) && this.birthdate.equals(otherPerson.birthdate)) { //check if the two names are equal
+        if(otherObject instanceof Person otherPerson) {
+            if(this.name.equals(otherPerson.name) && this.birthdate.equals(otherPerson.birthdate)) {
                 areTheyEqual = true;
             }
         }
