@@ -36,7 +36,7 @@ public class FacultyDemoLogin
                 System.out.print("Enter last name: ");
                 String lastName = keyboard.nextLine();
 
-                System.out.print("Enter birthdate (for example 01/01/2000): ");
+                System.out.print("Enter birthdate (MM/DD/YYYY): ");
                 String birthdate = keyboard.nextLine();
 
                 System.out.print("Enter username: ");
