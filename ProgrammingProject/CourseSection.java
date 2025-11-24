@@ -156,7 +156,7 @@ public class CourseSection {
             System.out.println(waitlist.toString()); 
         }
     }
-
+    
     public void displayEnrolledStudents() { //call in faculty inside displayAssignedSections()
         if (enrolledStudents == null || enrolledStudents.size() == 0) {
             System.out.println("*** No students enrolled in this class.");
@@ -177,6 +177,7 @@ public class CourseSection {
             }
         }
     }
+
 
 
 

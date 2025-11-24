@@ -30,10 +30,13 @@ public class FacultyDemo1
                 System.out.println("\n--- Your assigned classes ---");
                 currentFaculty.displayAssignedSections();
             }
+            
+            
             //opt 2: still thinking
             else if (choice == 2) {
                 System.out.println("\n--- Waitlist of your assigned classes ---");
             
+                // Nếu chưa được assign lớp nào
                 if (currentFaculty.getSectionCount() == 0) {
                     System.out.println("You have not been assigned to any classes yet.");
                     return;
@@ -41,6 +44,7 @@ public class FacultyDemo1
                 
                     int index = 0;
                 
+                    // Duyệt qua tất cả section mà faculty này được assign
                     while (index < currentFaculty.getSectionCount()) {
                         CourseSection section = currentFaculty.getSectionAt(index);
                 
@@ -68,6 +72,7 @@ public class FacultyDemo1
                     }
                 }
             }
+
             
             
             else if (choice == 3) {
