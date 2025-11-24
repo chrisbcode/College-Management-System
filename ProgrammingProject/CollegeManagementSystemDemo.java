@@ -160,7 +160,7 @@ public class CollegeManagementSystemDemo {
         while(option <= 3); {
         }
 
-        System.out.println("Good bye!");
+        System.out.println("Goodbye!");
 
     }
 }
