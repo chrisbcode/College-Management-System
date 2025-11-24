@@ -1,4 +1,5 @@
 import java.time.LocalDate;
+import java.util.Scanner;
 
 /**
  * @authors Christopher Bergsveinsson,
@@ -11,9 +12,9 @@ import java.time.LocalDate;
 public class Student extends Person implements Comparable<Student>
 {
     private int studentId;
-    NodeBasedList<CollegeClass> collegeClasses;
-    String username;
-    String password;
+    private ArrayBasedList<CollegeClass> collegeClasses = new ArrayBasedList<>(10);
+    private String username;
+    private String password;
 
     public Student() {
         super();
@@ -46,6 +47,11 @@ public class Student extends Person implements Comparable<Student>
         this.studentId = newStudentId;
     }
 
+    public Student(String fullName, LocalDate birthDate) {
+        super(fullName, birthDate);
+        this.setBirthDate(birthDate);
+    }
+
     public void setStudentId(int newStudentId) {
         if(newStudentId > 0) {
             studentId = newStudentId;
@@ -62,6 +68,29 @@ public class Student extends Person implements Comparable<Student>
 
     public String getPassword() {
         return password;
+    }
+
+    public void addClass(CollegeClass collegeClass) {
+        collegeClasses.add(collegeClass);
+    }
+
+    public void getClasses() {
+        System.out.println(collegeClasses);
+    }
+
+    public void removeClass() {
+        Scanner keyboard = new Scanner(System.in);
+        System.out.println(collegeClasses.toString2());
+        System.out.println("Which class would you like to remove?");
+        int option = keyboard.nextInt();
+        CollegeClass collegeClass = collegeClasses.get(option - 1);
+        if(collegeClass != null) {
+            collegeClass.removeStudent(this);
+        }
+    }
+
+    public void removeClass(CollegeClass collegeClass) {
+        collegeClasses.remove(collegeClass);
     }
 
     @Override

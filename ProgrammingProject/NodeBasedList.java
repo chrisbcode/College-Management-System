@@ -37,6 +37,11 @@ public class NodeBasedList<D> extends Object implements ListInterface<D>
         }   
         return found;
     }
+
+    public D find2(D item) {
+        Node currentNode = locate (item) ;
+        return currentNode.data;
+    }
   
     
     @Override

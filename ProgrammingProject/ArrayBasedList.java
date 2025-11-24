@@ -26,7 +26,7 @@ public class ArrayBasedList<D> implements ListInterface<D>
     public ArrayBasedList(int size) {
         super();
         if(size > 0) {
-            numberOfItems = size;
+            numberOfItems = 0;
             list = (D[])new Object[size];
         }
     }
@@ -52,6 +52,16 @@ public class ArrayBasedList<D> implements ListInterface<D>
         }
     }
 
+    public D get(int index) {
+        if(index >= 0 && index < list.length) {
+            return list[index];
+        }
+        else {
+            System.out.println("Index out of bounds");
+            return null;
+        }
+    }
+
     @Override
     public boolean find(D item) {
         boolean found = false;
@@ -60,6 +70,14 @@ public class ArrayBasedList<D> implements ListInterface<D>
             found = true;
         }
         return found;
+    }
+
+    public D find2(D item) {
+        int index = locate(item);
+        if(index != -1) {
+            return list[index];
+        }
+        return null;
     }
 
     private int locate(D item) {
@@ -95,6 +113,14 @@ public class ArrayBasedList<D> implements ListInterface<D>
 
     @Override
     public String toString() {
+        StringBuilder allItems = new StringBuilder();
+        for(int index = 0; index < numberOfItems; index++) {
+            allItems.append(list[index]).append("\n");
+        }
+        return allItems.toString();
+    }
+
+    public String toString2() { // numbered toString
         StringBuilder allItems = new StringBuilder();
         for(int index = 0; index < numberOfItems; index++) {
             allItems.append(index + 1).append(" ").append(list[index]).append("\n");

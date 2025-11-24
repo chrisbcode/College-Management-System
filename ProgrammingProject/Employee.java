@@ -37,7 +37,7 @@ public class Employee extends Person
 
     @Override
     public String toString() {
-        return super.toString() + " | Employee ID: " + employeeId;
+        return "Name: " + this.getName() + " | Employee ID: " + employeeId;
     }
 
     @Override

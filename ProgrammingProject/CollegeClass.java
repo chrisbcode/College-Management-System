@@ -1,4 +1,3 @@
-import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 /**
@@ -10,26 +9,27 @@ import java.time.LocalTime;
  */
 
 public class CollegeClass {
-    Faculty Professor;
-    ArrayBasedList<Student> StudentsInClass;
-    ClassWaitlist<Student> StudentWaitlist;
+    private Faculty Professor;
+    private ArrayBasedList<Student> StudentsInClass;
+    private ClassWaitlist<Student> StudentWaitlist;
 
-    String ClassName;
-    String ClassAbbreviation;
-    int ClassID;
-    int SectionNumber;
-    LocalDateTime ClassTime;
-    int creditNumber;
+    private String ClassName;
+    private String ClassAbbreviation;
+    private int ClassID;
+    private int SectionNumber;
+    private String day;
+    private LocalTime ClassTime;
+    private int creditNumber;
 
-    int sizeOfClass;
-    int sizeofWaitlist;
+    private int sizeOfClass;
+    private int sizeofWaitlist;
 
 
     public CollegeClass() {
         super();
     }
 
-    public CollegeClass(String ClassName, String ClassAbbreviation, int ClassID, int SectionNumber, LocalDateTime ClassTime, int sizeOfClass, int sizeOfWaitlist, int creditNumber) { // constructor for normal usage
+    public CollegeClass(String ClassName, String ClassAbbreviation, int ClassID, int SectionNumber, LocalTime ClassTime, int sizeOfClass, int sizeOfWaitlist, int creditNumber) { // constructor for normal usage
         this.ClassName = ClassName;
         this.ClassAbbreviation = ClassAbbreviation;
         this.ClassID = ClassID;
@@ -44,12 +44,29 @@ public class CollegeClass {
         StudentWaitlist = new ClassWaitlist<>(sizeOfWaitlist);
     }
 
+    public CollegeClass(String ClassName, String ClassAbbreviation, int ClassID, int SectionNumber, String day, int hour, int minute, int sizeOfClass, int sizeOfWaitlist, int creditNumber) { // constructor for normal usage
+        this.ClassName = ClassName;
+        this.ClassAbbreviation = ClassAbbreviation;
+        this.ClassID = ClassID;
+        this.SectionNumber = SectionNumber;
+
+        this.day = day;
+        this.ClassTime = LocalTime.of(hour, minute);
+        this.creditNumber = creditNumber;
+
+        this.sizeOfClass = sizeOfClass;
+        this.sizeofWaitlist = sizeOfWaitlist;
+
+        StudentsInClass = new ArrayBasedList<>(sizeOfClass);
+        StudentWaitlist = new ClassWaitlist<>(sizeOfWaitlist);
+    }
+
     public CollegeClass(Faculty Professor, String ClassName, int ClassID, int SectionNumber, int hour, int minute, int sizeOfClass, int sizeOfWaitlist, int creditNumber) { // constructor for normal usage
         this.Professor = Professor;
         this.ClassName = ClassName;
         this.ClassID = ClassID;
         this.SectionNumber = SectionNumber;
-        this.ClassTime = LocalDateTime.from(LocalTime.of(hour, minute));
+        this.ClassTime = LocalTime.of(hour, minute);
         this.creditNumber = creditNumber;
 
         this.sizeOfClass = sizeOfClass;
@@ -65,6 +82,10 @@ public class CollegeClass {
         this.StudentWaitlist = StudentWaitlist;
     }
 
+    public CollegeClass(Student[] StudentsInClass) {
+        this.StudentsInClass = new ArrayBasedList<>(StudentsInClass);
+    }
+
     public CollegeClass(Student[] StudentsInClass, Student[] StudentWaitlist) {
         this.StudentsInClass = new ArrayBasedList<>(StudentsInClass);
         this.StudentWaitlist = new ClassWaitlist<>(StudentWaitlist);
@@ -72,24 +93,28 @@ public class CollegeClass {
 
 
     public void setProfessor(Faculty Professor) {
+        if(this.Professor != null) {
+            this.Professor.removeClass(this);
+        }
         this.Professor = Professor;
+        Professor.addClass(this);
+        System.out.println("Professor set");
     }
 
     public Faculty getProfessor() {
         return Professor;
     }
 
-    public void reassignClass() { // method for full-time professors to reassign class to a part-time professor
-        setProfessor(Professor);
-    }
-
     public void addStudent(Student student) {
         if(StudentsInClass.size() < sizeOfClass) {
             StudentsInClass.add(student);
+            student.addClass(this);
+            System.out.println("Added student to class");
         }
         else if(StudentWaitlist.size() < sizeofWaitlist) {
             try {
                 StudentWaitlist.enqueue(student);
+                System.out.println("Class full, Added student to waitlist");
             } catch (QueueFullException e) {
                 System.out.println(e.getMessage());
             }
@@ -99,13 +124,46 @@ public class CollegeClass {
         }
     }
 
+    public void removeStudent() {
+        if(StudentWaitlist.size() > 0) {
+            try {
+                StudentWaitlist.dequeue();
+            } catch (QueueEmptyException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+        else {
+            System.out.println("Waitlist is empty!");
+        }
+    }
+
     public void removeStudent(Student student) {
-        
+        if(StudentsInClass.size() > 0 && StudentsInClass.size() != sizeOfClass) {
+            StudentsInClass.remove(student);
+            student.removeClass(this);
+            System.out.println("Removed student from class");
+        }
+        else if(StudentWaitlist.size() > 0 && StudentsInClass.size() == sizeofWaitlist) {
+            StudentsInClass.remove(student);
+            if(StudentWaitlist.size() > 0) {
+                try {
+                    Student tempStudent = StudentWaitlist.dequeue();
+                    StudentsInClass.add(tempStudent);
+                    tempStudent.removeClass(this);
+                    System.out.println("Removed student from class, student added to class from waitlist");
+                } catch (QueueEmptyException e) {
+                    System.out.println(e.getMessage());
+                }
+            }
+        }
+        else {
+            System.out.println("Class is empty!");
+        }
     }
 
     @Override
     public String toString() {
-        return "Course: " + ClassAbbreviation + ClassID + " (" + ClassName + ") | Section:" + SectionNumber + " | Time:" + ClassTime + " | Credits:" + creditNumber + " | Professor:" + Professor;
+        return "Course: " + ClassAbbreviation + ClassID + " (" + ClassName + ") | Section:" + SectionNumber + " | Date: " + day + " | Time:" + ClassTime + " | Credits:" + creditNumber + "\nProfessor: " + Professor;
     }
 
     public String toString2() {

@@ -15,18 +15,19 @@ public class CollegeManagementSystemDemo {
         Scanner keyboard = new Scanner(System.in);
         CollegeManagementSystem collegeManagementSystem = new CollegeManagementSystem(30, "password123", "user123");
 
-        System.out.print("Welcome to the College Management System, Programming Project made by Chris B, Maryam A and Anh V\n");
+        System.out.println("Welcome to the College Management System, Programming Project made by Chris B, Maryam A and Anh V\n");
 
 
 
         do {
-            System.out.println("Are you an admin (1), student (2) or faculty member (3)?");
+            System.out.println("Are you an admin (1), student (2), faculty member (3) or log off (any other number)?");
             option = keyboard.nextInt();
 
             if(option == 1){
-                System.out.print("Enter username: ");
+                System.out.println("Enter username: ");
+                keyboard.nextLine();
                 String username = keyboard.nextLine();
-                System.out.print("Enter password: ");
+                System.out.println("Enter password: ");
                 String password = keyboard.nextLine();
 
                 if(collegeManagementSystem.validateAdmin(username, password)){
@@ -55,12 +56,13 @@ public class CollegeManagementSystemDemo {
 
             }
             else if(option == 2){
-                System.out.print("Would you like to log on (1) or create an account (2)?");
+                System.out.println("Would you like to log on (1) or create an account (2)?");
                 option = keyboard.nextInt();
                 if(option == 1){
-                    System.out.print("Enter username: ");
+                    System.out.println("Enter your username: ");
+                    keyboard.nextLine();
                     String username = keyboard.nextLine();
-                    System.out.print("Enter password: ");
+                    System.out.println("Enter your password: ");
                     String password = keyboard.nextLine();
 
                     if(collegeManagementSystem.validateStudent(username, password)){
@@ -71,9 +73,10 @@ public class CollegeManagementSystemDemo {
                     }
                 }
                 else if(option == 2){
-                    System.out.print("Enter your full name: ");
+                    System.out.println("Enter your full name: ");
+                    keyboard.nextLine();
                     String fullName = keyboard.nextLine();
-                    System.out.print("Enter your date of birth, enter your year, month and day of birth seperated by the enter key: ");
+                    System.out.println("Enter your date of birth, enter your year, month and day of birth seperated by the enter key: ");
                     int year = keyboard.nextInt();
                     int month = keyboard.nextInt();
                     int day = keyboard.nextInt();
@@ -83,9 +86,10 @@ public class CollegeManagementSystemDemo {
                         System.out.println("Your account already exists");
                     }
                     else {
-                        System.out.println("Enter your username: ");
+                        System.out.println("Enter your username of choice: ");
+                        keyboard.nextLine();
                         String username = keyboard.nextLine();
-                        System.out.print("Enter your password: ");
+                        System.out.println("Enter your password of choice: ");
                         String password = keyboard.nextLine();
 
                         int studentId = (int) (Math.random() * 1000);
@@ -97,34 +101,62 @@ public class CollegeManagementSystemDemo {
                 }
             }
             else if(option == 3){
-                System.out.println("""
-                    \nEnter 1 to 
-                    Enter 2 to
-                    Enter 3 to
-                    Enter 4 to
-                    Enter 5 to  """);
-
+                System.out.println("Would you like to log on (1) or create an account (2)?");
                 option = keyboard.nextInt();
+                if(option == 1){
+                    System.out.println("Enter your username: ");
+                    keyboard.nextLine();
+                    String username = keyboard.nextLine();
+                    System.out.println("Enter your password: ");
+                    String password = keyboard.nextLine();
 
-                if (option == 1) {
-
-                } else if (option == 2) {
-
-                } else if (option == 3) {
-
-                } else if (option == 4) {
-
-                } else if (option == 5) {
-
+                    if(collegeManagementSystem.validateFaculty(username, password)){
+                        System.out.println("Would you like to reassign a part time faculty member to one of your classes (1) or view your classes (2)?");
+                        option = keyboard.nextInt();
+                        if(option == 1){
+                            collegeManagementSystem.reassignPTFaculty(collegeManagementSystem.returnFaculty(username, password));
+                        }
+                        else if(option == 2){
+                            collegeManagementSystem.viewYourClassesToTeach(collegeManagementSystem.returnFaculty(username, password));
+                        }
+                        else  {
+                            System.out.println("Invalid option");
+                        }
+                    }
+                    else {
+                        System.out.println("Invalid username or password");
+                    }
                 }
-                else {
+                else if(option == 2){
+                    System.out.println("Enter your full name: ");
+                    keyboard.nextLine();
+                    String fullName = keyboard.nextLine();
+                    System.out.println("Enter your faculty ID: ");
+                    int facultyID = keyboard.nextInt();
+
+                    if(collegeManagementSystem.searchFaculty(fullName, facultyID)) {
+                        System.out.println("Your account already exists");
+                    }
+                    else {
+                        System.out.println("Enter your username of choice: ");
+                        keyboard.nextLine();
+                        String username = keyboard.nextLine();
+                        System.out.println("Enter your password of choice: ");
+                        String password = keyboard.nextLine();
+
+                        Faculty faculty = collegeManagementSystem.getFaculty(fullName, facultyID);
+                        faculty.setUsername(username);
+                        faculty.setPassword(password);
+                        System.out.println("Account created");
+                    }
 
                 }
             }
         }
-        while(option != 5); {
+        while(option <= 3); {
         }
 
+        System.out.println("Good bye!");
 
     }
 }

@@ -46,6 +46,10 @@ public class Person
     public void setBirthDate(int year,  int month, int day) {
         birthdate = LocalDate.of(year, month, day);
     }
+
+    public void setBirthDate(LocalDate birthdate) {
+        this.birthdate = birthdate;
+    }
     
     public LocalDate getBirthDate() {
         return birthdate;
