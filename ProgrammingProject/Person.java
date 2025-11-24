@@ -1,65 +1,77 @@
-import java.time.LocalDate;
 
 /**
- * @authors Christopher Bergsveinsson, Anh Vo, Maryam
- * @version 11/6/2025
- * CSC 223 - Anwar Ahmad
- * Every Tuesday and  Thursday 9:35am → 11:35am
- * Programming Project - College Management System - Person Class
- * Updated: 11.19.25 - 11:21pm
+ * Write a description of class Person here.
+ *
+ * @author (your firstName)
+ * @version (a version number or a date)
  */
-
-public class Person
+public class Person extends Object
 {
     
-    private String name;
-    private LocalDate birthdate;
+    private String firstName; 
+    
+    private String lastName;
+    
+    private String birthdate;
 
     public Person() {
         super();
-    }
-
-    public Person(String name) {
-        this.name = name;
-    }
-
-    public Person(String name, LocalDate birthdate) {
-        this.name = name;
-        this.birthdate = birthdate;
+        firstName = "";
+        lastName = "";
+        birthdate = "";
+        
     }
     
-    public Person(String newName, int year, int month, int day) {
+    public Person(String newFirstName, String newLastName) { 
         super();
-        name = newName;
-        birthdate = LocalDate.of(year, month, day);
+        firstName = newFirstName;
+        lastName = newLastName;
+        birthdate = "";
+    }
+    
+    public Person(String newFirstName, String newLastName, String newBirthdate) { 
+        super();
+        firstName = newFirstName;
+        lastName = newLastName;
+        birthdate = newBirthdate;
     }
 
     
-    public void setName(String newName) {
-        name = newName;
+    public void setFirstName(String newName) {
+        firstName = newName;
     }
     
-    public String getName() {
-        return name;
+    public String getFirstName() {
+        return firstName;
     }
     
-    public void setBirthDate(int year,  int month, int day) {
-        birthdate = LocalDate.of(year, month, day);
+    public void setLastName(String newLastName) {
+        lastName = newLastName;
     }
     
-    public LocalDate getBirthDate() {
+    public String getLastName() {
+        return lastName;
+    }
+    
+    public void setBirthdate(String newBirthdate) {
+        birthdate = newBirthdate;
+    }
+    
+    public String getBirthdate() {
         return birthdate;
     }
     
     public String toString(){
-        return "Name: " + name + " | Birth date: " + birthdate;
+        return "First name: " + firstName + " Last name: " + lastName + 
+                "\nBirthdate: " + birthdate;
     }
     
        @Override
     public boolean equals(Object otherObject) {
         boolean areTheyEqual = false; 
-        if(otherObject instanceof Person otherPerson) {
-            if(this.name.equals(otherPerson.name) && this.birthdate.equals(otherPerson.birthdate)) {
+        if(otherObject != null && otherObject instanceof Person) { //if there is an object and it is a person
+            Person otherPerson = (Person)otherObject; //object type casting, new reference of type person
+            if(this.firstName.equals(otherPerson.firstName) && this.lastName.equals(otherPerson.lastName) && this.birthdate.equals(otherPerson.birthdate)) { //check if the two firstNames are equal
                 areTheyEqual = true;
             }
         }

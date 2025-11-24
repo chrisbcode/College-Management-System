@@ -1,16 +1,16 @@
 /**
- * @authors Christopher Bergsveinsson,
- * @version 11/6/2025
- * CSC 223 - Anwar Ahmad
- * Every Tuesday and  Thursday 9:35am → 11:35am
- * Programming Project - College Management System - QueueInterface
+ * Write a description of interface QueueInterface here.
+ *
+ * @author (your name)
+ * @version (a version number or a date)
  */
-
 public interface QueueInterface<E>
 {
-    public abstract void enqueue(E item) throws QueueFullException;
-
-    public abstract E dequeue() throws QueueEmptyException;
-
+    public abstract void enqueue ( E item) throws QueueFullException;
+    
+    
+    public abstract E dequeue();
+    
+   
     public abstract String look();
-}
+}    

@@ -1,48 +1,61 @@
-/**
- * @authors Christopher Bergsveinsson,
- * @version 11/6/2025
- * CSC 223 - Anwar Ahmad
- * Every Tuesday and  Thursday 9:35am → 11:35am
- * Programming Project - College Management System - NodeBasedStack Class
- */
 
+/**
+ * Write a description of class NodeBasedStack here.
+ *
+ * @author (your name)
+ * @version (a version number or a date)
+ */
 public class NodeBasedStack<T> extends UnBoundedStack<T>
 {
-
-    private Node<T> top;
-
+    //instance variables
+    private Node<T> top; //reference to a Node object
+    
+    //constructor
     public NodeBasedStack() {
         top = null;
     }
+    
     @Override
     public void push(T item) {
         Node<T> currentNode = new Node<T>(item);
-        if(top == null) {
+        
+        if(top == null) { //if the stack is empty
             top = currentNode;
         }
         else {
             currentNode.setLink(top);
             top = currentNode;
         }
+        
     }
+    
     @Override
-    public void pop() throws StackEmptyException {
-        if(top != null) {
-            top = top.getLink();
+    public  T pop() throws StackEmptyException {
+        if(top != null) { //if the stack is empty
+            T topItem = top.getData();
+            top = top.getLink(); //go ot the next item below the top
+            return topItem;
         }
         else {
-            throw new StackEmptyException("Pop attempted on an empty stack!");
+            throw new StackEmptyException("Pop attempted on an empty stack");
         }
     }
+    
     @Override
-    public String peek() {
-        String topItem;
-        if(top != null) {
-            topItem = top.getData().toString();
-        }
-        else {
-            topItem = "Stack is empty!";
+    public T peek() {
+        T topItem = null;
+        if (top != null) {
+            topItem = top.getData();
         }
         return topItem;
+    }
+    
+    public boolean isEmpty() {
+        if (top == null) {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 }

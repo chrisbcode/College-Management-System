@@ -1,18 +1,17 @@
-/**
- * @authors Christopher Bergsveinsson,
- * @version 11/6/2025
- * CSC 223 - Anwar Ahmad
- * Every Tuesday and  Thursday 9:35am → 11:35am
- * Programming Project - College Management System - QueueEmptyException
- */
 
+/**
+ * Write a description of class QueueEmptyException here.
+ *
+ * @author (your name)
+ * @version (a version number or a date)
+ */
 public class QueueEmptyException extends Exception
 {
-    public QueueEmptyException() {
+    public QueueEmptyException(){
         super();
     }
-
-    public QueueEmptyException(String message) {
+    
+    public QueueEmptyException(String message){
         super(message);
-    }
+    }    
 }

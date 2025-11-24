@@ -83,4 +83,16 @@ public class ArrayBasedQueue<E> extends Object implements QueueInterface<E>
     public int size() {
         return numberOfItems;
     }
+    
+    public E getQueue(int index){
+            return queue[index];
+    }
+    
+    public boolean isEmpty() {
+        if (numberOfItems == 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

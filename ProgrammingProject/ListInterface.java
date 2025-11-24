@@ -1,16 +1,19 @@
 /**
- * @authors Christopher Bergsveinsson,
- * @version 11/6/2025
- * CSC 223 - Anwar Ahmad
- * Every Tuesday and  Thursday 9:35am → 11:35am
- * Programming Project - College Management System - ListInterface
+ * Write a description of interface ListInterface here.
+ *
+ * @author (your name)
+ * @version (a version number or a date)
  */
-
-public interface ListInterface<D>
+public interface ListInterface<E>
 {
-    public abstract void add(D item);
+  
+    public abstract void add(E item);
+    
 
-    public abstract boolean remove(D item);
+    public abstract boolean remove(E item);
+ 
+    public abstract boolean find(E item);
+    
 
-    public abstract boolean find(D item);
-}
+    
+}    

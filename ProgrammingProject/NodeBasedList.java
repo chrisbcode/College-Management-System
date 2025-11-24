@@ -38,7 +38,7 @@ public class NodeBasedList<D> extends Object implements ListInterface<D>
         return found;
     }
   
-    
+    /*
     @Override
     public boolean remove(D item) {
         boolean removed = false;
@@ -54,16 +54,37 @@ public class NodeBasedList<D> extends Object implements ListInterface<D>
         }
     return removed;
     }
-
+    */
     @Override
-    public String toString() {
+    public boolean remove(D item) {
+        boolean found = false;
         Node currentNode = list;
-        StringBuilder stackInfo = new StringBuilder();
-        while(currentNode != null) {
-            stackInfo.append(currentNode.getData().toString()).append("\n");
-            currentNode = currentNode.getLink();
+        while(!found && currentNode != null) {
+            if(currentNode.getData().equals(item)) {
+                found = true;
+            }
+            else{
+                currentNode = currentNode.getLink();
+            }
         }
-        return stackInfo.toString();
+        
+        boolean removed = false;
+        if(found) {
+            if(currentNode == list) { //if the item your trying to remove is the beginning of the list
+                list = list.getLink(); //removes the first item on the list
+            }
+            
+            else{
+                Node previousNode = list;
+                while(previousNode != null && previousNode.getLink() != currentNode) {
+                    previousNode = previousNode.getLink();
+                }
+                previousNode.setLink(currentNode.getLink());
+                //removed = true;
+            }
+            removed = true;
+        }
+        return removed;
     }
     
     private class Node extends Object {
@@ -120,5 +141,26 @@ public class NodeBasedList<D> extends Object implements ListInterface<D>
                 return null;
             }
     }
+    
+    public boolean login(String username, String password) {
+        boolean areTheyEqual = false;
+    
+        Node currentNode = list;  
+    
+        while (currentNode != null) { 
+            //Student s = (Student)currentNode.getData();
+            Loginable s = (Loginable)currentNode.getData();
+            
+            if (s.getUsername().equals(username) && s.getPassword().equals(password)) {
+                areTheyEqual = true;  
+            }
+    
+            currentNode = currentNode.getLink(); 
+        }
+    
+        return areTheyEqual;
+    }
+    
+    
 
 }

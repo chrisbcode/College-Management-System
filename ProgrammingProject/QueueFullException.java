@@ -1,19 +1,20 @@
-/**
- * @authors Christopher Bergsveinsson,
- * @version 11/6/2025
- * CSC 223 - Anwar Ahmad
- * Every Tuesday and  Thursday 9:35am → 11:35am
- * Programming Project - College Management System - QueueFullException
- */
 
+/**
+ * Write a description of class QueueFullException here.
+ *
+ * @author (your name)
+ * @version (a version number or a date)
+ */
 public class QueueFullException extends Exception
 {
-    public QueueFullException() {
+    
+    public QueueFullException (){
         super();
+        
     }
-
-    public QueueFullException(String message) {
+    
+    public QueueFullException(String message){
         super(message);
     }
-
+    
 }
