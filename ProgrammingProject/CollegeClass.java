@@ -7,6 +7,8 @@ import java.time.LocalTime;
  * CSC 223 - Anwar Ahmad
  * Every Tuesday and Thursday 9:35am → 11:35am
  * Programming Project - College Management System - CollegeClass Class
+ * 
+ * a
  */
 
 public class CollegeClass {
