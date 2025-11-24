@@ -157,6 +157,27 @@ public class CourseSection {
         }
     }
 
+    public void displayEnrolledStudents() { //call in faculty inside displayAssignedSections()
+        if (enrolledStudents == null || enrolledStudents.size() == 0) {
+            System.out.println("*** No students enrolled in this class.");
+        } else {
+            System.out.println("--- Enrolled students ---");
+    
+            int index = 0;
+            while (index < enrolledStudents.size()) {
+                Student s = (Student) enrolledStudents.getList(index);
+    
+                if (s != null) {
+                    System.out.println("\n" + (index + 1) + ". "
+                                       + s.getFirstName() + " "
+                                       + s.getLastName());
+                }
+    
+                index++;
+            }
+        }
+    }
+
 
 
 

@@ -18,7 +18,7 @@ public class FacultyDemo1
         do {
             System.out.println("\n===== Faculty Menu =====");
             System.out.println("1. View my assigned classes");
-            System.out.println("2. View waitlist for my classes (coming soon)");
+            System.out.println("2. View waitlist for my classes");
             System.out.println("3. Exit");
             System.out.print("Enter your choice: ");
 
@@ -32,7 +32,43 @@ public class FacultyDemo1
             }
             //opt 2: still thinking
             else if (choice == 2) {
-                System.out.println("\nOption 2 (view waitlist) will be implemented later.");
+                System.out.println("\n--- Waitlist of your assigned classes ---");
+            
+                // Nếu chưa được assign lớp nào
+                if (currentFaculty.getSectionCount() == 0) {
+                    System.out.println("You have not been assigned to any classes yet.");
+                    return;
+                } else{
+                
+                    int index = 0;
+                
+                    // Duyệt qua tất cả section mà faculty này được assign
+                    while (index < currentFaculty.getSectionCount()) {
+                        CourseSection section = currentFaculty.getSectionAt(index);
+                
+                        if (section != null) {
+                            Course course = section.getCourse();
+                            String code;
+                            String title;
+                
+                            if (course != null) {
+                                code = course.getSubjectCode();  
+                                title = course.getCourseTitle();
+                            } else {
+                                code = "Unknown";
+                                title = "";
+                            }
+                
+                            System.out.println("\nClass:\n " 
+                                               + (index + 1) + ": " + code + " " + title + " (" + section.getSectionNumber() + ")"
+                                               + "\nTime: " + section.getTimeSlot());
+                
+                            section.displayWaitlist();
+                        }
+                
+                        index = index + 1;
+                    }
+                }
             }
             
             
