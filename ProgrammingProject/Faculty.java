@@ -19,7 +19,7 @@ public class Faculty extends Employee
     private String username;
     private String password;
     private boolean fullTime;
-    private ArrayBasedList<CollegeClass> collegeClasses = new ArrayBasedList<>(10);
+    private ArrayBasedList<CollegeClass> collegeClasses = new ArrayBasedList<>(5);
 
     private static final int MAX_SECTIONS = 20;
 
