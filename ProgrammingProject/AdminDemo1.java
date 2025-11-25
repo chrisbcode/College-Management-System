@@ -204,18 +204,18 @@ public class AdminDemo1 {
                 if (facultyStack.isEmpty()) {
                     System.out.println("There is no faculty to remove.");
                 } else {
-                    // Lấy người ít thâm niên nhất = người trên đỉnh stack bên ngoài
+                    
                     Faculty least = facultyStack.peek();
                     System.out.println("Least senior faculty: " + least);
             
-                    // 1. Pop khỏi stack dùng cho login
+                    
                     try {
                         facultyStack.pop();
                     } catch (StackEmptyException e) {
                         System.out.println("Error removing from stack: " + e.getMessage());
                     }
             
-                    // 2. Xóa khỏi facultyList để không hiện trong option 4 nữa
+                    
                     boolean removedFromList = facultyList.remove(least);
                     if (!removedFromList) {
                         System.out.println("Warning: faculty not found in list.");
