@@ -112,11 +112,11 @@ public class Student extends Person implements Comparable<Student>
     @Override
     public int compareTo(Student other) {
 
-    int result = this.getName().compareTo(other.getName());
-    if (result != 0) {
-    return result;
-    }
+        int result = this.getName().compareTo(other.getName());
+        if (result != 0) {
+        return result;
+        }
 
-    return this.getBirthDate().compareTo(other.getBirthDate());
-    }
+        return this.getBirthDate().compareTo(other.getBirthDate());
+        }
     }
