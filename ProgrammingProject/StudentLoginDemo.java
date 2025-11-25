@@ -30,44 +30,45 @@ public class StudentLoginDemo
             
             if (option == 1 ){
                 System.out.println("Enter your first name: ");
-                String name = sc.nextLine();
-                
+                String firstName = sc.nextLine();
+                            
                 System.out.println("Enter your last name: ");
                 String lastName = sc.nextLine();
-                
+                            
                 System.out.println("Enter your birthdate (MM/DD/YYYY): ");
-                String birthdate = sc .next();
-                
-                info = new Student(name , lastName , birthdate );
-                
-                
-                
-                if(studentTree.find(info)) { 
-                    System.out.println("An account with this information already exsits.");
-                    System.out.println("Please log in using your username and password");
-                }
+                String birthdate = sc.nextLine();
+            
+                System.out.println("Create a username: ");
+                String username = sc.nextLine();
+            
+                System.out.println("Create a password: ");
+                String password = sc.nextLine();
+            
+                int newId = Student.getID();
+            
+                // Tạo 1 student duy nhất, đầy đủ thông tin
+                Student newStudent = new Student(firstName, lastName, birthdate,
+                                                 newId, username, password);
+            
+                // Kiểm tra trùng dựa trên student nhà bạn đã tạo hoàn chỉnh
+                if (studentTree.find(newStudent)) {
+                    System.out.println("An account with this information already exists.");
+                    System.out.println("Please log in using your username and password.");
+                } 
                 else {
+                    studentTree.add(newStudent);
+                    studentList.add(newStudent);
+            
                     System.out.println("\n*** Account Created Successfully ***");
-                    System.out.println("Your student account has been created. \n Your ID is: " + info.getID());
-                    
-                    System.out.println("Create a username");
-                    String username = sc .next();
-                    System.out.println("Create a password");
-                    String password = sc .next();
-                    
-                    Student s = new Student(name,lastName, birthdate, info.getID(),username, password);
-                    
-                    info = new Student (username, password);
-                    
-                    studentTree.add(s);
-                    studentList.add(info);
+                    System.out.println("Your student account has been created.");
+                    System.out.println("Your ID is: " + newStudent.getStudentId());
                 }
 
             }
             
             else if (option == 2){
                     System.out.println("Enter your username: ");
-                     String username = sc .next();
+                    String username = sc .next();
                     System.out.println("Enter your password");
                     String password = sc .next();
                     Student account = new Student(username, password);
@@ -77,7 +78,9 @@ public class StudentLoginDemo
                     if (studentList.login(username, password)){
                         System.out.println("Login successful! Welcome to the Student Information System (SIS).");
                      
-                        StudentDemo1.StudentMenu(account, sectionList); //bridge to demo2
+                        Student loggedInStudent = studentList.getItem(account);
+                        
+                        StudentDemo1.StudentMenu(loggedInStudent, sectionList); //bridge to demo2
                     }
                     else{
                         System.out.println("Invalid username or password. Please try again.");

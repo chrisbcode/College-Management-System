@@ -57,27 +57,28 @@ public class StudentDemo1
         if (sectionList.isEmpty()) {
             System.out.println("There are no classes available.");
             return; //exit out
-        }
-    
-        System.out.println("\nAvailable classes:");
-        sectionList.displayAllSections(); //display all section opened from admin
-    
-        System.out.print("Enter the index of the class to register: ");
-        int index = sc.nextInt();
-        sc.nextLine();
-    
-        if (index < 1 || index > sectionList.size()) {
-            System.out.println("Invalid class selection.");
-            return;
         } else {
     
-            CourseSection selectedSection = (CourseSection) sectionList.getList(index - 1);
+            System.out.println("\nAvailable classes:");
+            sectionList.displayAllSections(); //display all section opened from admin
         
-            boolean enrolled = selectedSection.registerStudent(currentStudent); //registeredStudent from courseSection
+            System.out.print("Enter the index of the class to register: ");
+            int index = sc.nextInt();
+            sc.nextLine();
         
-            if (enrolled) {
-                Course c = selectedSection.getCourse();
-                currentStudent.addCourse(c);
+            if (index < 1 || index > sectionList.size()) {
+                System.out.println("Invalid class selection.");
+                return;
+            } else {
+        
+                CourseSection selectedSection = (CourseSection) sectionList.getList(index - 1);
+            
+                boolean enrolled = selectedSection.registerStudent(currentStudent); //registeredStudent from courseSection
+            
+                if (enrolled) {
+                    Course c = selectedSection.getCourse();
+                    currentStudent.addCourse(c);
+                }
             }
         }
     }

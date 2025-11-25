@@ -18,15 +18,16 @@ public class FacultyDemoLogin
 
         do {
             System.out.println("\n===== Faculty System =====");
-            System.out.println("1. Create a new faculty account");
-            System.out.println("2. Log in to an existing faculty account");
-            System.out.println("3. Exit");
+            //System.out.println("1. Create a new faculty account");
+            System.out.println("1. Log in to an existing faculty account");
+            System.out.println("2. Exit");
             System.out.print("Please enter your choice: ");
 
             option = keyboard.nextInt();
             keyboard.nextLine();   
 
-            //opt 1: create acct | emloyeeId auto generate
+            //opt 1: create acct | emloyeeId auto generate //updated: replace the option to admin menu 
+            /*
             if (option == 1) {
                 System.out.println("\n--- Create a new faculty account ---");
 
@@ -57,9 +58,10 @@ public class FacultyDemoLogin
 
                 System.out.println(">> Faculty account created successfully.");
             }
+            */
 
             //acct created -> login
-            else if (option == 2) {
+            if (option == 1) {
                 System.out.println("\n--- Faculty login ---");
 
                 System.out.print("Enter username: ");
@@ -84,7 +86,7 @@ public class FacultyDemoLogin
             }
             
 
-            else if (option == 3) {
+            else if (option == 2) {
                 System.out.println("Goodbye");
             }
 
@@ -93,7 +95,7 @@ public class FacultyDemoLogin
                 System.out.println("Invalid option. Try again!");
             }
 
-        } while (option != 3);
+        } while (option != 2);
     }
     
     

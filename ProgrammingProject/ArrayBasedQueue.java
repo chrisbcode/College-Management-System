@@ -85,7 +85,8 @@ public class ArrayBasedQueue<E> extends Object implements QueueInterface<E>
     }
     
     public E getQueue(int index){
-            return queue[index];
+        int realIndex = (front + index) % queue.length;
+        return queue[realIndex];
     }
     
     public boolean isEmpty() {
@@ -95,4 +96,30 @@ public class ArrayBasedQueue<E> extends Object implements QueueInterface<E>
             return false;
         }
     }
+    
+    
+    @Override
+    public String toString() {
+        String result = "";
+    
+        if (numberOfItems == 0) {
+            return "Waitlist is empty.";
+        }
+        
+        
+        //AI help part 
+        int i = 0;
+        while (i < numberOfItems) {
+            E object  = getQueue(i);  
+    
+            if (object != null) {
+                result = result + (i + 1) + ". " + object.toString() + "\n";
+            }
+    
+            i++;
+        }
+    
+        return result;
+    }
+
 }

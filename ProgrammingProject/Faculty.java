@@ -120,7 +120,9 @@ public class Faculty extends Employee implements Loginable
                                + "(" + sec.getSectionNumber() + ")" 
                                + "\nTime: " + sec.getTimeSlot()
                                + "\nInstructor: " + sec.getInstructorName());
+                //try to display student that enrolled to course that already assigned to faculty               
                 sec.displayEnrolledStudents();
+
             }
         }
     }

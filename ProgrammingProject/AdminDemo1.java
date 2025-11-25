@@ -11,23 +11,58 @@ public class AdminDemo1 {
 
     public static void adminMenu(Administrator admin,
                                  ArrayBasedList<CourseSection> sectionList,
-                                 ArrayBasedList<Faculty> facultyList) {
+                                 ArrayBasedList<Faculty> facultyList,
+                                 NodeBasedStack<Faculty> facultyStack) {
         Scanner keyboard = new Scanner(System.in);
         int choice = 0;
 
         do {
             System.out.println("\n===== Administrator Menu =====");
-            System.out.println("1. Add class (course section)");
-            System.out.println("2. Cancel class");
-            System.out.println("3. Assign faculty to class");
-            System.out.println("4. Remove least senior faculty");
-            System.out.println("5. Exit administrator menu");
+            System.out.println("1. Hire new faculty");
+            System.out.println("2. Add class (course section)");
+            System.out.println("3. Cancel class");
+            System.out.println("4. Assign faculty to class");
+            System.out.println("5. Remove least senior faculty");
+            System.out.println("6. Exit administrator menu");
             System.out.print("Please enter your choice: ");
             choice = keyboard.nextInt();
             keyboard.nextLine(); 
 
-            //option 1: add class
+            //option 1: Hire new faculty,  create acct | emloyeeId auto generate
             if (choice == 1) {
+                System.out.println("\n--- Create a new faculty account ---");
+
+                System.out.print("Enter first name: ");
+                String firstName = keyboard.nextLine();
+
+                System.out.print("Enter last name: ");
+                String lastName = keyboard.nextLine();
+
+                System.out.print("Enter birthdate (MM/DD/YYYY): ");
+                String birthdate = keyboard.nextLine();
+
+                System.out.print("Enter username: ");
+                String username = keyboard.nextLine();
+
+                System.out.print("Enter password: ");
+                String password = keyboard.nextLine();
+
+                System.out.print("Enter department: ");
+                String department = keyboard.nextLine();
+
+                Faculty newFaculty = new Faculty(firstName, lastName, birthdate,
+                                                    username, password, department);
+                
+                facultyStack.push(newFaculty);
+                
+                facultyList.add(newFaculty);
+                
+                admin.addFaculty(newFaculty);
+
+                System.out.println(">> Faculty account created successfully.");
+            }
+
+            else if (choice == 2) {
                 System.out.println("\n--- Add a new class ---");
 
                 System.out.print("Enter course code (e.g., CS101): ");
@@ -61,7 +96,7 @@ public class AdminDemo1 {
 
             }
             //option 2: cancel class
-            else if (choice == 2) {
+            else if (choice == 3) {
                 System.out.println("\n--- Cancel a class ---");
 
                 if (sectionList.isEmpty()) {
@@ -90,7 +125,7 @@ public class AdminDemo1 {
                 }
             }
             //option 3: assign faculty to course
-            else if (choice == 3) {
+            else if (choice == 4) {
                 System.out.println("\n--- Assign faculty to a class ---");
             
                 //no course added by admin
@@ -151,7 +186,8 @@ public class AdminDemo1 {
                 }
             }
             //option 4: remove least senority faculty
-            else if (choice == 4) {
+            else if (choice == 5) {
+                /*
                 System.out.println("\n--- Remove least senior faculty ---");
 
                 Faculty least = admin.viewLeastSeniorFaculty();
@@ -162,10 +198,35 @@ public class AdminDemo1 {
                     admin.removeLeastSeniorFaculty();
                     System.out.println(">> Faculty removed from stack.");
                 }
+                */
+                System.out.println("\n--- Remove least senior faculty ---");
+
+                if (facultyStack.isEmpty()) {
+                    System.out.println("There is no faculty to remove.");
+                } else {
+                    // Lấy người ít thâm niên nhất = người trên đỉnh stack bên ngoài
+                    Faculty least = facultyStack.peek();
+                    System.out.println("Least senior faculty: " + least);
+            
+                    // 1. Pop khỏi stack dùng cho login
+                    try {
+                        facultyStack.pop();
+                    } catch (StackEmptyException e) {
+                        System.out.println("Error removing from stack: " + e.getMessage());
+                    }
+            
+                    // 2. Xóa khỏi facultyList để không hiện trong option 4 nữa
+                    boolean removedFromList = facultyList.remove(least);
+                    if (!removedFromList) {
+                        System.out.println("Warning: faculty not found in list.");
+                    }
+            
+                    System.out.println(">> Faculty removed from system.");
+                }
 
             }
             
-            else if (choice == 5) {
+            else if (choice == 6) {
                 System.out.println("Exiting administrator menu...");
             }
             
@@ -173,6 +234,6 @@ public class AdminDemo1 {
                 System.out.println("Invalid option. Try again!");
             }
 
-        } while (choice != 5);
+        } while (choice != 6);
     }
 }

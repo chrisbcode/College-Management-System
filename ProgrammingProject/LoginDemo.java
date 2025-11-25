@@ -35,7 +35,7 @@ public class LoginDemo
             option = keyboard.nextInt();
             keyboard.nextLine();
             if(option == 1) { //login system for administrator
-                AdminLoginDemo.runAdminLogin(admin,sectionList,facultyList);
+                AdminLoginDemo.runAdminLogin(admin,sectionList,facultyList, facultyStack);
                 
             }
             else if(option == 2) {  //login system for student

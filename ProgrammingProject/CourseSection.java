@@ -162,7 +162,9 @@ public class CourseSection {
             System.out.println("*** No students enrolled in this class.");
         } else {
             System.out.println("--- Enrolled students ---");
-    
+            
+            
+            /*
             int index = 0;
             while (index < enrolledStudents.size()) {
                 Student s = (Student) enrolledStudents.getList(index);
@@ -175,6 +177,29 @@ public class CourseSection {
     
                 index++;
             }
+            */
+           
+            //check for idea 
+            int index = 0;
+            while (index < enrolledStudents.size()) {
+                Student s = (Student) enrolledStudents.getList(index);
+    
+                if (s != null) {
+    
+                    // Ưu tiên in FirstName + LastName, nếu trống thì in Username
+                    String displayName;
+                    if (s.getFirstName() != null && !s.getFirstName().isEmpty()) {
+                        displayName = s.getFirstName() + " " + s.getLastName();
+                    } else {
+                        displayName = s.getUsername();  // fallback
+                    }
+    
+                    System.out.println((index + 1) + ". " + displayName);
+                }
+    
+                index++;
+            }
+            System.out.println("---------------------------");
         }
     }
 

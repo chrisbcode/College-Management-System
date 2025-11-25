@@ -33,12 +33,26 @@ public class Student extends Person implements Loginable, Comparable<Student>
        myCourse = new ArrayBasedList<Course>(10);
    }
    
+   public Student(String firstName, String lastName,
+               String username, String password) {
+       super(firstName, lastName); 
+       this.username = username;
+       this.password = password;
+       this.myCourse = new ArrayBasedList<Course>(10);
+   }
+
    
    public Student(String name, String lastName, String bdate, int newStudentId, String newUsername, String newPassword){
-       super(name,lastName, bdate);
-       studentId = 0;
-       username = "";
-       password = "";
+       super(name, lastName, bdate);
+
+        if (newStudentId > 0) {
+            this.studentId = newStudentId;
+        } else {
+            this.studentId = 0;
+        }
+    
+        this.username = newUsername;
+        this.password = newPassword;
        myCourse = new ArrayBasedList<Course>(10);
    }
    

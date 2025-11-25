@@ -62,7 +62,7 @@ public class Person extends Object
     }
     
     public String toString(){
-        return "First name: " + firstName + " Last name: " + lastName + 
+        return "\nFirst name: " + firstName + " Last name: " + lastName + 
                 "\nBirthdate: " + birthdate;
     }
     
