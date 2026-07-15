@@ -1,10 +1,13 @@
-
 /**
- * Write a description of class ArrayBasedQueue here.
+ * @authors Christopher Bergsveinsson, Anh Vo, Maryam Anwari
+ * @version 7/15/2026
  *
- * @author (your name)
- * @version (a version number or a date)
+ * Programming Project - College Management System - ArrayBasedList Class
+ *
+ * Description:
+ *
  */
+
 public class ArrayBasedQueue<E> extends Object implements QueueInterface<E>
 {
     

@@ -1,19 +1,21 @@
+/**
+ * @authors Christopher Bergsveinsson, Anh Vo, Maryam Anwari
+ * @version 7/15/2026
+ *
+ * Programming Project - College Management System - ArrayBasedList Class
+ *
+ * Description:
+ *
+ */
+
 import java.time.LocalDate;
 import java.util.Scanner;
-
-/**
- * @authors Christopher Bergsveinsson,
- * @version 11/6/2025
- * CSC 223 - Anwar Ahmad
- * Every Tuesday and  Thursday 9:35am → 11:35am
- * Programming Project - College Management System - CollegeManagementSystemDemo
- */
 
 public class CollegeManagementSystemDemo {
     public static void main(String[] args){
         int option;
         Scanner keyboard = new Scanner(System.in);
-        CollegeManagementSystem collegeManagementSystem = new CollegeManagementSystem(30, "password123", "user123");
+        CollegeManagementSystem collegeManagementSystem = new CollegeManagementSystem(30, "pass123", "user123");
 
         System.out.println("Welcome to the College Management System, Programming Project made by Chris B, Maryam A and Anh V\n");
 
@@ -52,6 +54,9 @@ public class CollegeManagementSystemDemo {
                             System.out.println("Invalid option");
                         }
                     }
+                }
+                else {
+                    System.out.println("Invalid username or password");
                 }
 
             }

@@ -1,13 +1,15 @@
+/**
+ * @authors Christopher Bergsveinsson, Anh Vo, Maryam Anwari
+ * @version 7/15/2026
+ *
+ * Programming Project - College Management System - ArrayBasedList Class
+ *
+ * Description:
+ *
+ */
+
 import java.time.LocalDate;
 import java.util.Scanner;
-
-/**
- * @authors Christopher Bergsveinsson,
- * @version 11/6/2025
- * CSC 223 - Anwar Ahmad
- * Every Tuesday and  Thursday 9:35am → 11:35am
- * Programming Project - College Management System - Student Class
- */
 
 public class Student extends Person implements Comparable<Student>
 {

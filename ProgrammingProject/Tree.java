@@ -1,10 +1,13 @@
-
 /**
- * Write a description of class Tree here.
+ * @authors Christopher Bergsveinsson, Anh Vo, Maryam Anwari
+ * @version 7/15/2026
  *
- * @author (your name)
- * @version (a version number or a date)
+ * Programming Project - College Management System - ArrayBasedList Class
+ *
+ * Description:
+ *
  */
+
 public class Tree<E extends Comparable> implements TreeInterface<E>
 {
     private TreeNode<E> root;

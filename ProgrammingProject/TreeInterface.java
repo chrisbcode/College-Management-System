@@ -1,10 +1,13 @@
-
 /**
- * Write a description of interface TreeInterface here.
+ * @authors Christopher Bergsveinsson, Anh Vo, Maryam Anwari
+ * @version 7/15/2026
  *
- * @author (your name)
- * @version (a version number or a date)
+ * Programming Project - College Management System - ArrayBasedList Class
+ *
+ * Description:
+ *
  */
+
 public interface TreeInterface<E>
 {
     public abstract void add(E item);

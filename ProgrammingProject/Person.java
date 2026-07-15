@@ -1,13 +1,14 @@
-import java.time.LocalDate;
-
 /**
- * @authors Christopher Bergsveinsson, Anh Vo, Maryam
- * @version 11/6/2025
- * CSC 223 - Anwar Ahmad
- * Every Tuesday and  Thursday 9:35am → 11:35am
- * Programming Project - College Management System - Person Class
- * Updated: 11.19.25 - 11:21pm
+ * @authors Christopher Bergsveinsson, Anh Vo, Maryam Anwari
+ * @version 7/15/2026
+ *
+ * Programming Project - College Management System - ArrayBasedList Class
+ *
+ * Description:
+ *
  */
+
+import java.time.LocalDate;
 
 public class Person
 {

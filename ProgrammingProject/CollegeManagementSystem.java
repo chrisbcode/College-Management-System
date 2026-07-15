@@ -1,16 +1,18 @@
+/**
+ * @authors Christopher Bergsveinsson, Anh Vo, Maryam Anwari
+ * @version 7/15/2026
+ *
+ * Programming Project - College Management System - ArrayBasedList Class
+ *
+ * Description:
+ *
+ */
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Scanner;
 import java.util.TreeSet;
-
-/**
- * @authors Christopher Bergsveinsson,
- * @version 11/6/2025
- * CSC 223 - Anwar Ahmad
- * Every Tuesday and  Thursday 9:35am → 11:35am
- * Programming Project - College Management System - CollegeManagementSystem Class
- */
 
 public class CollegeManagementSystem {
     private NodeBasedStack<Faculty> FacultyStack = new NodeBasedStack<>();
@@ -38,7 +40,7 @@ public class CollegeManagementSystem {
 
     // system
     public boolean validateAdmin(String adminUsername, String adminPassword) {
-        return adminUsername.equals(adminUsername) && adminPassword.equals(adminPassword);
+        return adminUsername.equals(this.adminUsername) && adminPassword.equals(this.adminPassword);
     }
 
     public boolean validateFaculty(String facultyUsername, String facultyPassword) {
@@ -128,15 +130,18 @@ public class CollegeManagementSystem {
         System.out.println("""
                     \nEnter 1 to hire a faculty member
                     Enter 2 to let go of a faculty member
-                    Enter 3 assign a member of the faculty to a class""");
+                    Enter 3 assign a member of the faculty to a class
+                    Enter 4 to view faculty members""");
         option = keyboard.nextInt();
 
         if (option == 1) {
             System.out.println("Enter faculty member's full name: ");
+            keyboard.nextLine();
             String facultyName = keyboard.nextLine();
             System.out.println("Enter faculty member's employee ID: ");
             int employeeID = keyboard.nextInt();
             System.out.println("Enter faculty member's department: ");
+            keyboard.nextLine();
             String department = keyboard.nextLine();
 
             System.out.println("Will faculty member be full time? (Y/N): ");
