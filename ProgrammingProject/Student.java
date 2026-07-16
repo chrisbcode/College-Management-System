@@ -1,18 +1,16 @@
 /**
  * @authors Christopher Bergsveinsson, Anh Vo, Maryam Anwari
  * @version 7/15/2026
- *
+ * <p>
  * Programming Project - College Management System - ArrayBasedList Class
- *
+ * <p>
  * Description:
- *
  */
 
 import java.time.LocalDate;
 import java.util.Scanner;
 
-public class Student extends Person implements Comparable<Student>
-{
+public class Student extends Person implements Comparable<Student> {
     private int studentId;
     private ArrayBasedList<CollegeClass> collegeClasses = new ArrayBasedList<>(10);
     private String username;
@@ -39,7 +37,7 @@ public class Student extends Person implements Comparable<Student>
         this.password = password;
     }
 
-    public Student(String newName, int newStudentId,  int year, int month, int day) {
+    public Student(String newName, int newStudentId, int year, int month, int day) {
         super(newName, year, month, day);
         this.studentId = newStudentId;
     }
@@ -55,7 +53,7 @@ public class Student extends Person implements Comparable<Student>
     }
 
     public void setStudentId(int newStudentId) {
-        if(newStudentId > 0) {
+        if (newStudentId > 0) {
             studentId = newStudentId;
         }
     }
@@ -86,7 +84,7 @@ public class Student extends Person implements Comparable<Student>
         System.out.println("Which class would you like to remove?");
         int option = keyboard.nextInt();
         CollegeClass collegeClass = collegeClasses.get(option - 1);
-        if(collegeClass != null) {
+        if (collegeClass != null) {
             collegeClass.removeStudent(this);
         }
     }
@@ -99,11 +97,12 @@ public class Student extends Person implements Comparable<Student>
     public String toString() {
         return super.toString() + " | Student Id: " + studentId;
     }
+
     @Override
     public boolean equals(Object otherObject) {
         boolean areTheyEqual = false;
-        if(otherObject instanceof Student otherStudent) {
-            if(super.equals(otherObject) &&
+        if (otherObject instanceof Student otherStudent) {
+            if (super.equals(otherObject) &&
                     this.studentId == otherStudent.studentId) {
                 areTheyEqual = true;
             }
@@ -114,11 +113,11 @@ public class Student extends Person implements Comparable<Student>
     @Override
     public int compareTo(Student other) {
 
-    int result = this.getName().compareTo(other.getName());
-    if (result != 0) {
-    return result;
-    }
+        int result = this.getName().compareTo(other.getName());
+        if (result != 0) {
+            return result;
+        }
 
-    return this.getBirthDate().compareTo(other.getBirthDate());
+        return this.getBirthDate().compareTo(other.getBirthDate());
     }
-    }
+}

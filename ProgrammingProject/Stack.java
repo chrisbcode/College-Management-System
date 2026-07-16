@@ -1,15 +1,13 @@
 /**
- * @authors Christopher Bergsveinsson, Anh Vo, Maryam Anwari
  * @version 7/15/2026
- *
+ * <p>
  * Programming Project - College Management System - ArrayBasedList Class
- *
+ * <p>
  * Description:
- *
+ * @authors Christopher Bergsveinsson, Anh Vo, Maryam Anwari
  */
 
-public abstract class Stack<T> extends Object
-{
+public abstract class Stack<T> extends Object {
 
     private String name;
 
@@ -17,6 +15,7 @@ public abstract class Stack<T> extends Object
         super();
         name = "";
     }
+
     public Stack(String stackName) {
         super();
         name = stackName;
@@ -25,6 +24,7 @@ public abstract class Stack<T> extends Object
     public void setName(String newName) {
         name = newName;
     }
+
     public String getName() {
         return name;
     }

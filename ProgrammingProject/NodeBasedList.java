@@ -1,133 +1,128 @@
 /**
- * @authors Christopher Bergsveinsson, Anh Vo, Maryam Anwari
  * @version 7/15/2026
- *
+ * <p>
  * Programming Project - College Management System - ArrayBasedList Class
- *
+ * <p>
  * Description:
- *
+ * @authors Christopher Bergsveinsson, Anh Vo, Maryam Anwari
  */
 
-public class NodeBasedList<D> extends Object implements ListInterface<D>
-{
-    
-    private Node list; 
-    
-    
+public class NodeBasedList<D> extends Object implements ListInterface<D> {
+
+    private Node list;
+
+
     public NodeBasedList() {
         super();
         list = null;
     }
-    
+
     @Override
     public void add(D item) {
         Node currentNode = new Node(item);
-        if(list == null) { 
+        if (list == null) {
             list = currentNode;
-        }
-        else {
-            
+        } else {
+
             currentNode.setLink(list);
             list = currentNode;
         }
     }
-    
+
     @Override
     public boolean find(D item) {
         boolean found = false;
-        Node currentNode = locate (item) ;
-        if(currentNode != null) { 
+        Node currentNode = locate(item);
+        if (currentNode != null) {
             found = true;
-        }   
+        }
         return found;
     }
 
     public D find2(D item) {
-        Node currentNode = locate (item) ;
+        Node currentNode = locate(item);
         return currentNode.data;
     }
-  
-    
+
+
     @Override
     public boolean remove(D item) {
         boolean removed = false;
         Node currentNode = locate(item);
-        if(currentNode != null) {
+        if (currentNode != null) {
             Node previousNode = list;
-        while(previousNode.getLink() != currentNode){
-            previousNode = previousNode.getLink();
+            while (previousNode.getLink() != currentNode) {
+                previousNode = previousNode.getLink();
+            }
+            previousNode.setLink(currentNode.getLink());
+            currentNode.setLink(null);
+            removed = true;
         }
-        previousNode. setLink(currentNode.getLink());
-        currentNode.setLink(null);
-        removed = true;
-        }
-    return removed;
+        return removed;
     }
 
     @Override
     public String toString() {
         Node currentNode = list;
         StringBuilder stackInfo = new StringBuilder();
-        while(currentNode != null) {
+        while (currentNode != null) {
             stackInfo.append(currentNode.getData().toString()).append("\n");
             currentNode = currentNode.getLink();
         }
         return stackInfo.toString();
     }
-    
+
     private class Node extends Object {
-        
+
         private D data;
         private Node link;
-        
+
         //constructor
         public Node(D newData) {
             super();
             data = newData;
             link = null;
         }
-        
-        
+
+
         public void setData(D newData) {
             data = newData;
         }
-        
+
         public D getData() {
             return data;
         }
-        
+
         public void setLink(Node otherNode) {
             this.link = otherNode;
         }
-        
+
         public Node getLink() {
             return link;
         }
     }
-    
-     private Node locate(D item) {
+
+    private Node locate(D item) {
         boolean found = false;
         Node currentNode = list;
-        while(!found && currentNode != null){
-            if(currentNode.getData().equals(item)){
+        while (!found && currentNode != null) {
+            if (currentNode.getData().equals(item)) {
                 found = true;
-            }
-            else {
+            } else {
                 currentNode = currentNode.getLink();
             }
         }
         return currentNode;
     }
-    
-    public D getItem(D item) { 
+
+    public D getItem(D item) {
         Node locatedNode = locate(item);
-        
-        if (locate(item) != null) {  
+
+        if (locate(item) != null) {
             return locatedNode.getData();
-            }
-            else{
-                return null;
-            }
+        } else {
+            return null;
+        }
     }
 
 }

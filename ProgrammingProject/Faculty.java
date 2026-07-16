@@ -1,18 +1,16 @@
 /**
  * @authors Christopher Bergsveinsson, Anh Vo, Maryam Anwari
  * @version 7/15/2026
- *
+ * <p>
  * Programming Project - College Management System - ArrayBasedList Class
- *
+ * <p>
  * Description:
- *
  */
 
 import java.time.LocalDate;
 import java.util.Scanner;
 
-public class Faculty extends Employee
-{
+public class Faculty extends Employee {
     //instance variable
     private String department;
     private String username;
@@ -107,7 +105,7 @@ public class Faculty extends Employee
     public boolean equals(Object otherObject) {
         boolean areTheyEqual = false;
         if (otherObject != null && otherObject instanceof Faculty otherFaculty) {
-            if(this.getName().equals(otherFaculty.getName()) && this.getEmployeeId() == otherFaculty.getEmployeeId()) {
+            if (this.getName().equals(otherFaculty.getName()) && this.getEmployeeId() == otherFaculty.getEmployeeId()) {
                 areTheyEqual = true;
             }
         }

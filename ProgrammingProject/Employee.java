@@ -1,18 +1,16 @@
 /**
- * @authors Christopher Bergsveinsson, Anh Vo, Maryam Anwari
  * @version 7/15/2026
- *
+ * <p>
  * Programming Project - College Management System - ArrayBasedList Class
- *
+ * <p>
  * Description:
- *
+ * @authors Christopher Bergsveinsson, Anh Vo, Maryam Anwari
  */
 
-public class Employee extends Person
-{
+public class Employee extends Person {
 
     //instance variable
-    private int employeeId; //camel caseing
+    private int employeeId; //camel casing
 
     //constructors
     public Employee() {
@@ -45,16 +43,13 @@ public class Employee extends Person
     public boolean equals(Object otherObject) {
         boolean areTheyEqual = false;
         if (otherObject instanceof Employee otherEmployee) {
-            if(this.getName().equals(otherEmployee.getName()) &&
+            if (this.getName().equals(otherEmployee.getName()) &&
                     this.employeeId == otherEmployee.employeeId) {
                 areTheyEqual = true;
             }
         }
         return areTheyEqual;
     }
-
-
-
 
 
 }

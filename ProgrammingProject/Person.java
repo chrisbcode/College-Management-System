@@ -1,18 +1,16 @@
 /**
  * @authors Christopher Bergsveinsson, Anh Vo, Maryam Anwari
  * @version 7/15/2026
- *
+ * <p>
  * Programming Project - College Management System - ArrayBasedList Class
- *
+ * <p>
  * Description:
- *
  */
 
 import java.time.LocalDate;
 
-public class Person
-{
-    
+public class Person {
+
     private String name;
     private LocalDate birthdate;
 
@@ -28,43 +26,43 @@ public class Person
         this.name = name;
         this.birthdate = birthdate;
     }
-    
+
     public Person(String newName, int year, int month, int day) {
         super();
         name = newName;
         birthdate = LocalDate.of(year, month, day);
     }
 
-    
+
     public void setName(String newName) {
         name = newName;
     }
-    
+
     public String getName() {
         return name;
     }
-    
-    public void setBirthDate(int year,  int month, int day) {
+
+    public void setBirthDate(int year, int month, int day) {
         birthdate = LocalDate.of(year, month, day);
     }
 
     public void setBirthDate(LocalDate birthdate) {
         this.birthdate = birthdate;
     }
-    
+
     public LocalDate getBirthDate() {
         return birthdate;
     }
-    
-    public String toString(){
+
+    public String toString() {
         return "Name: " + name + " | Birth date: " + birthdate;
     }
-    
-       @Override
+
+    @Override
     public boolean equals(Object otherObject) {
-        boolean areTheyEqual = false; 
-        if(otherObject instanceof Person otherPerson) {
-            if(this.name.equals(otherPerson.name) && this.birthdate.equals(otherPerson.birthdate)) {
+        boolean areTheyEqual = false;
+        if (otherObject instanceof Person otherPerson) {
+            if (this.name.equals(otherPerson.name) && this.birthdate.equals(otherPerson.birthdate)) {
                 areTheyEqual = true;
             }
         }

@@ -1,11 +1,10 @@
 /**
- * @authors Christopher Bergsveinsson, Anh Vo, Maryam Anwari
  * @version 7/15/2026
- *
+ * <p>
  * Programming Project - College Management System - ArrayBasedList Class
- *
+ * <p>
  * Description:
- *
+ * @authors Christopher Bergsveinsson, Anh Vo, Maryam Anwari
  */
 public class ClassWaitlist<E> implements QueueInterface<E> {
 
@@ -27,8 +26,8 @@ public class ClassWaitlist<E> implements QueueInterface<E> {
     public int size() { // method to eliminate redundant length checks
         int i;
 
-        for(i = 0; i < items.length; i++) {
-            if(items[i] == null) {
+        for (i = 0; i < items.length; i++) {
+            if (items[i] == null) {
                 return i;
             }
         }
@@ -38,10 +37,9 @@ public class ClassWaitlist<E> implements QueueInterface<E> {
 
     @Override
     public void enqueue(E item) throws QueueFullException {
-        if(size() >= items.length) {
+        if (size() >= items.length) {
             throw new QueueFullException("Queue is full!");
-        }
-        else {
+        } else {
             items[size()] = item;
         }
 
@@ -50,14 +48,13 @@ public class ClassWaitlist<E> implements QueueInterface<E> {
     @Override
     public E dequeue() throws QueueEmptyException {
         E dequeuedItem = null;
-        if(size() <= 0) {
+        if (size() <= 0) {
             throw new QueueEmptyException("Queue is empty!");
-        }
-        else {
+        } else {
             dequeuedItem = items[0];
 
-            for(int i = 0; i < size() - 1; i++) {
-                items[i] = items[i+1];
+            for (int i = 0; i < size() - 1; i++) {
+                items[i] = items[i + 1];
             }
 
             items[size() - 1] = null;
@@ -67,17 +64,16 @@ public class ClassWaitlist<E> implements QueueInterface<E> {
 
     @Override
     public String look() {
-        if(size() <= 0) {
+        if (size() <= 0) {
             return "Queue is empty";
-        }
-        else
+        } else
             return items[0].toString();
     }
 
     @Override
     public String toString() {
         StringBuilder listContents = new StringBuilder();
-        for(int i = 0; i < size(); i++) {
+        for (int i = 0; i < size(); i++) {
             listContents.append(items[i]).append("\n");
         }
         return listContents.toString();

@@ -1,18 +1,16 @@
 /**
- * @authors Christopher Bergsveinsson, Anh Vo, Maryam Anwari
  * @version 7/15/2026
- *
+ * <p>
  * Programming Project - College Management System - ArrayBasedList Class
- *
+ * <p>
  * Description:
- *
+ * @authors Christopher Bergsveinsson, Anh Vo, Maryam Anwari
  */
 
-public interface QueueInterface<E>
-{
-    public abstract void enqueue(E item) throws QueueFullException;
+public interface QueueInterface<E> {
+    void enqueue(E item) throws QueueFullException;
 
-    public abstract E dequeue() throws QueueEmptyException;
+    E dequeue() throws QueueEmptyException;
 
-    public abstract String look();
+    String look();
 }

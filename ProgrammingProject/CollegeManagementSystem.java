@@ -1,11 +1,10 @@
 /**
  * @authors Christopher Bergsveinsson, Anh Vo, Maryam Anwari
  * @version 7/15/2026
- *
+ * <p>
  * Programming Project - College Management System - ArrayBasedList Class
- *
+ * <p>
  * Description:
- *
  */
 
 import java.time.LocalDate;
@@ -75,10 +74,10 @@ public class CollegeManagementSystem {
         int option;
 
         System.out.println("""
-                    \nEnter 1 to add a course
-                    Enter 2 to remove a course
-                    Enter 3 to view the course list
-                    Enter 4 to view the course details""");
+                \nEnter 1 to add a course
+                Enter 2 to remove a course
+                Enter 3 to view the course list
+                Enter 4 to view the course details""");
         option = keyboard.nextInt();
         if (option == 1) {
             System.out.println("Enter course name: ");
@@ -105,18 +104,15 @@ public class CollegeManagementSystem {
 
             CollegeClasses.add(new CollegeClass(courseName, courseAbbreviation, courseID, courseSectionNumber, courseDayOfWeek, courseHour, courseMinute, classSize, waitlistSize, courseCredits));
             System.out.println("Course added successfully!");
-        }
-        else if (option == 2) {
+        } else if (option == 2) {
             System.out.println(CollegeClasses.toString2());
             System.out.println("Enter class to remove: ");
             option = keyboard.nextInt();
             CollegeClasses.remove(CollegeClasses.get(option));
-        }
-        else if (option == 3) {
+        } else if (option == 3) {
             System.out.println(CollegeClasses);
-        }
-        else if (option == 4) {
-            for(int i = 0; i < CollegeClasses.size(); i++) {
+        } else if (option == 4) {
+            for (int i = 0; i < CollegeClasses.size(); i++) {
                 System.out.println(CollegeClasses.get(i).toString2());
             }
         }
@@ -128,10 +124,10 @@ public class CollegeManagementSystem {
         int option;
 
         System.out.println("""
-                    \nEnter 1 to hire a faculty member
-                    Enter 2 to let go of a faculty member
-                    Enter 3 assign a member of the faculty to a class
-                    Enter 4 to view faculty members""");
+                \nEnter 1 to hire a faculty member
+                Enter 2 to let go of a faculty member
+                Enter 3 assign a member of the faculty to a class
+                Enter 4 to view faculty members""");
         option = keyboard.nextInt();
 
         if (option == 1) {
@@ -150,22 +146,20 @@ public class CollegeManagementSystem {
 
             Faculty faculty = new Faculty(facultyName, employeeID, department, fullTime);
 
-            if(fullTime) {
+            if (fullTime) {
                 PartTimeFacultyList.add(faculty);
             }
 
             FacultyList.add(faculty);
             FacultyStack.push(faculty);
-        }
-        else if (option == 2) {
+        } else if (option == 2) {
             try {
                 FacultyStack.pop();
                 System.out.println("Faculty member of least seniority let go!");
             } catch (StackEmptyException e) {
                 System.out.println(e.getMessage());
             }
-        }
-        else if (option == 3) {
+        } else if (option == 3) {
             System.out.println(FacultyList.toString2());
             System.out.println("Choose faculty member to assign to class");
             option = keyboard.nextInt();
@@ -173,8 +167,7 @@ public class CollegeManagementSystem {
             System.out.println("Choose class to assign this faculty member to");
 
             CollegeClasses.get(keyboard.nextInt()).setProfessor(FacultyList.get(option));
-        }
-        else {
+        } else {
             System.out.println("Invalid option");
         }
 
@@ -205,23 +198,21 @@ public class CollegeManagementSystem {
     }
 
     //student
-
     public void manageYourClasses(Student student) {
 
         Scanner keyboard = new Scanner(System.in);
         int option;
 
-        if(this.StudentList == null) {
+        if (this.StudentList == null) {
             StudentList.add(student);
             System.out.print("You successfully applied and entered this college! Your assigned student ID is " + student.getStudentId());
-        }
-        else if(!StudentList.find(student)) {
+        } else if (!StudentList.find(student)) {
             StudentList.add(student);
             System.out.print("You successfully applied and entered this college! Your assigned student ID is " + student.getStudentId());
         }
 
         boolean loggedIn = true;
-        while(loggedIn) {
+        while (loggedIn) {
             System.out.println("""
                     \nEnter 1 to add a course to your class list
                     Enter 2 to remove a course from your class list
@@ -229,28 +220,23 @@ public class CollegeManagementSystem {
                     Enter 4 to log off""");
             option = keyboard.nextInt();
 
-            if(option == 1) {
+            if (option == 1) {
                 System.out.println(CollegeClasses.toString2());
                 System.out.println("Which college class would you like to add to your class list?");
                 option = keyboard.nextInt();
 
                 CollegeClasses.get(option - 1).addStudent(student); // automatically checks for availability and adds class to student's classes if joined successfully
-            }
-            else if(option == 2) {
+            } else if (option == 2) {
                 student.removeClass();
-            }
-            else if(option == 3) {
+            } else if (option == 3) {
                 student.getClasses();
-            }
-            else if(option == 4) {
+            } else if (option == 4) {
                 loggedIn = false;
-            }
-            else {
+            } else {
                 System.out.println("Invalid option!");
             }
         }
     }
-
 
 
 }

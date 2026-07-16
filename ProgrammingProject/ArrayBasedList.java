@@ -1,32 +1,30 @@
 /**
  * @authors Christopher Bergsveinsson, Anh Vo, Maryam Anwari
  * @version 7/15/2026
- *
+ * <p>
  * Programming Project - College Management System - ArrayBasedList Class
- *
+ * <p>
  * Description:
- *
  */
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-public class ArrayBasedList<D> implements ListInterface<D>
-{
+public class ArrayBasedList<D> implements ListInterface<D> {
     private int numberOfItems;
     private D[] list;
 
     public ArrayBasedList() {
         super();
         numberOfItems = 0;
-        list = (D[])new Object[5];
+        list = (D[]) new Object[5];
     }
 
     public ArrayBasedList(int size) {
         super();
-        if(size > 0) {
+        if (size > 0) {
             numberOfItems = 0;
-            list = (D[])new Object[size];
+            list = (D[]) new Object[size];
         }
     }
 
@@ -38,12 +36,11 @@ public class ArrayBasedList<D> implements ListInterface<D>
 
     @Override
     public void add(D item) {
-        if(numberOfItems < list.length) {
+        if (numberOfItems < list.length) {
             list[numberOfItems] = item;
             numberOfItems++;
-        }
-        else {
-            D [] largerList = (D[])new Object[list.length + list.length];
+        } else {
+            D[] largerList = (D[]) new Object[list.length + list.length];
             System.arraycopy(list, 0, largerList, 0, list.length);
             largerList[numberOfItems] = item;
             numberOfItems++;
@@ -52,10 +49,9 @@ public class ArrayBasedList<D> implements ListInterface<D>
     }
 
     public D get(int index) {
-        if(index >= 0 && index < list.length) {
+        if (index >= 0 && index < list.length) {
             return list[index];
-        }
-        else {
+        } else {
             System.out.println("Index out of bounds");
             return null;
         }
@@ -65,7 +61,7 @@ public class ArrayBasedList<D> implements ListInterface<D>
     public boolean find(D item) {
         boolean found = false;
         int index = locate(item);
-        if(index != -1) {
+        if (index != -1) {
             found = true;
         }
         return found;
@@ -73,7 +69,7 @@ public class ArrayBasedList<D> implements ListInterface<D>
 
     public D find2(D item) {
         int index = locate(item);
-        if(index != -1) {
+        if (index != -1) {
             return list[index];
         }
         return null;
@@ -82,15 +78,14 @@ public class ArrayBasedList<D> implements ListInterface<D>
     private int locate(D item) {
         boolean found = false;
         int index = 0;
-        while(!found && index < numberOfItems) {
-            if(list[index].equals(item)) {
+        while (!found && index < numberOfItems) {
+            if (list[index].equals(item)) {
                 found = true;
-            }
-            else {
+            } else {
                 index++;
             }
         }
-        if(!found) {
+        if (!found) {
             index = -1;
         }
         return index;
@@ -100,7 +95,7 @@ public class ArrayBasedList<D> implements ListInterface<D>
     public boolean remove(D item) {
         int index = locate(item);
         boolean removed = false;
-        if(index != -1) {
+        if (index != -1) {
             list[index] = null;
             numberOfItems--;
             list[index] = list[numberOfItems];
@@ -113,7 +108,7 @@ public class ArrayBasedList<D> implements ListInterface<D>
     @Override
     public String toString() {
         StringBuilder allItems = new StringBuilder();
-        for(int index = 0; index < numberOfItems; index++) {
+        for (int index = 0; index < numberOfItems; index++) {
             allItems.append(list[index]).append("\n");
         }
         return allItems.toString();
@@ -121,7 +116,7 @@ public class ArrayBasedList<D> implements ListInterface<D>
 
     public String toString2() { // numbered toString
         StringBuilder allItems = new StringBuilder();
-        for(int index = 0; index < numberOfItems; index++) {
+        for (int index = 0; index < numberOfItems; index++) {
             allItems.append(index + 1).append(" ").append(list[index]).append("\n");
         }
         return allItems.toString();
@@ -143,16 +138,17 @@ public class ArrayBasedList<D> implements ListInterface<D>
             super();
             currentLocation = 0;
         }
+
         @Override
         public boolean hasNext() {
             return currentLocation < numberOfItems;
         }
+
         @Override
         public D next() throws NoSuchElementException {
-            if(currentLocation >= numberOfItems) {
+            if (currentLocation >= numberOfItems) {
                 throw new NoSuchElementException("Reached the end of the list!");
-            }
-            else {
+            } else {
                 D currentItem = list[currentLocation];
                 currentLocation++;
                 return currentItem;
@@ -160,8 +156,8 @@ public class ArrayBasedList<D> implements ListInterface<D>
         }
     }
 
-    public D getList(int index){
-            return list[index];
+    public D getList(int index) {
+        return list[index];
     }
-    
+
 }

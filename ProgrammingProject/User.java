@@ -1,11 +1,10 @@
 /**
- * @authors Christopher Bergsveinsson, Anh Vo, Maryam Anwari
  * @version 7/15/2026
- *
+ * <p>
  * Programming Project - College Management System - ArrayBasedList Class
- *
+ * <p>
  * Description:
- *
+ * @authors Christopher Bergsveinsson, Anh Vo, Maryam Anwari
  */
 
 public class User {
@@ -52,7 +51,7 @@ public class User {
     }
 
     public Faculty getFaculty(String username, String password) {
-        if(this.username.equals(username) && this.password.equals(password)) {
+        if (this.username.equals(username) && this.password.equals(password)) {
             return faculty;
         }
         return null;
@@ -67,7 +66,7 @@ public class User {
     }
 
     public Student getStudent(String username, String password) {
-        if(this.username.equals(username) && this.password.equals(password)) {
+        if (this.username.equals(username) && this.password.equals(password)) {
             return student;
         }
         return null;
@@ -80,9 +79,9 @@ public class User {
     @Override
     public boolean equals(Object otherObject) {
         boolean areTheyEqual = false;
-        if(otherObject instanceof User otherStudent) {
+        if (otherObject instanceof User otherStudent) {
             User otherUser = (User) otherStudent;
-            if(otherUser.getUsername().equals(this.getUsername()) && otherUser.getPassword().equals(this.getPassword())) {
+            if (otherUser.getUsername().equals(this.getUsername()) && otherUser.getPassword().equals(this.getPassword())) {
                 areTheyEqual = true;
             }
         }

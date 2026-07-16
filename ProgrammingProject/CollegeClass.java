@@ -1,11 +1,10 @@
 /**
  * @authors Christopher Bergsveinsson, Anh Vo, Maryam Anwari
  * @version 7/15/2026
- *
+ * <p>
  * Programming Project - College Management System - ArrayBasedList Class
- *
+ * <p>
  * Description:
- *
  */
 
 import java.time.LocalTime;
@@ -95,7 +94,7 @@ public class CollegeClass {
 
 
     public void setProfessor(Faculty Professor) {
-        if(this.Professor != null) {
+        if (this.Professor != null) {
             this.Professor.removeClass(this);
         }
         this.Professor = Professor;
@@ -108,46 +107,42 @@ public class CollegeClass {
     }
 
     public void addStudent(Student student) {
-        if(StudentsInClass.size() < sizeOfClass) {
+        if (StudentsInClass.size() < sizeOfClass) {
             StudentsInClass.add(student);
             student.addClass(this);
             System.out.println("Added student to class");
-        }
-        else if(StudentWaitlist.size() < sizeofWaitlist) {
+        } else if (StudentWaitlist.size() < sizeofWaitlist) {
             try {
                 StudentWaitlist.enqueue(student);
                 System.out.println("Class full, Added student to waitlist");
             } catch (QueueFullException e) {
                 System.out.println(e.getMessage());
             }
-        }
-        else {
+        } else {
             System.out.println("Class and waitlist full!");
         }
     }
 
     public void removeStudent() {
-        if(StudentWaitlist.size() > 0) {
+        if (StudentWaitlist.size() > 0) {
             try {
                 StudentWaitlist.dequeue();
             } catch (QueueEmptyException e) {
                 System.out.println(e.getMessage());
             }
-        }
-        else {
+        } else {
             System.out.println("Waitlist is empty!");
         }
     }
 
     public void removeStudent(Student student) {
-        if(StudentsInClass.size() > 0 && StudentsInClass.size() != sizeOfClass) {
+        if (StudentsInClass.size() > 0 && StudentsInClass.size() != sizeOfClass) {
             StudentsInClass.remove(student);
             student.removeClass(this);
             System.out.println("Removed student from class");
-        }
-        else if(StudentWaitlist.size() > 0 && StudentsInClass.size() == sizeofWaitlist) {
+        } else if (StudentWaitlist.size() > 0 && StudentsInClass.size() == sizeofWaitlist) {
             StudentsInClass.remove(student);
-            if(StudentWaitlist.size() > 0) {
+            if (StudentWaitlist.size() > 0) {
                 try {
                     Student tempStudent = StudentWaitlist.dequeue();
                     StudentsInClass.add(tempStudent);
@@ -157,8 +152,7 @@ public class CollegeClass {
                     System.out.println(e.getMessage());
                 }
             }
-        }
-        else {
+        } else {
             System.out.println("Class is empty!");
         }
     }
