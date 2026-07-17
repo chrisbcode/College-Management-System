@@ -1,17 +1,18 @@
 /**
+ * College Management System - CollegeManagementSystem
+ * <p>
+ * @version 7/16/2026
+ * <p>
+ * Description: Combines implementations of Stack, List, Queue, and other classes to simulate a system that manages college classes and their attributes, interacting with admin, faculty and student.
+ * <p>
  * @authors Christopher Bergsveinsson, Anh Vo, Maryam Anwari
- * @version 7/15/2026
- * <p>
- * Programming Project - College Management System - ArrayBasedList Class
- * <p>
- * Description:
  */
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Scanner;
-import java.util.TreeSet;
+
 
 public class CollegeManagementSystem {
     private NodeBasedStack<Faculty> FacultyStack = new NodeBasedStack<>();
@@ -205,10 +206,10 @@ public class CollegeManagementSystem {
 
         if (this.StudentList == null) {
             StudentList.add(student);
-            System.out.print("You successfully applied and entered this college! Your assigned student ID is " + student.getStudentId());
+            System.out.print("You successfully entered this college! Your assigned student ID is " + student.getStudentId());
         } else if (!StudentList.find(student)) {
             StudentList.add(student);
-            System.out.print("You successfully applied and entered this college! Your assigned student ID is " + student.getStudentId());
+            System.out.print("You successfully entered this college! Your assigned student ID is " + student.getStudentId());
         }
 
         boolean loggedIn = true;

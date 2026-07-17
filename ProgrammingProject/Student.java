@@ -1,10 +1,11 @@
 /**
+ * College Management System - Student
+ * <p>
+ * @version 7/16/2026
+ * <p>
+ * Description: Class that contains attributes of a Student, with the classes the student is taking being an example.
+ * <p>
  * @authors Christopher Bergsveinsson, Anh Vo, Maryam Anwari
- * @version 7/15/2026
- * <p>
- * Programming Project - College Management System - ArrayBasedList Class
- * <p>
- * Description:
  */
 
 import java.time.LocalDate;

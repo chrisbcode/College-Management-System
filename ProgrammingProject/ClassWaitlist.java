@@ -1,11 +1,13 @@
 /**
- * @version 7/15/2026
+ * College Management System - ClassWaitlist
  * <p>
- * Programming Project - College Management System - ArrayBasedList Class
+ * @version 7/16/2026
  * <p>
- * Description:
+ * Description: An array based queue.
+ * <p>
  * @authors Christopher Bergsveinsson, Anh Vo, Maryam Anwari
  */
+
 public class ClassWaitlist<E> implements QueueInterface<E> {
 
     private E[] items;

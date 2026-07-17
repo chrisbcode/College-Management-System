@@ -1,10 +1,11 @@
 /**
+ * College Management System - CollegeManagementSystemDemo
+ * <p>
+ * @version 7/16/2026
+ * <p>
+ * Description: A console UI implementing the CMS.
+ * <p>
  * @authors Christopher Bergsveinsson, Anh Vo, Maryam Anwari
- * @version 7/15/2026
- * <p>
- * Programming Project - College Management System - ArrayBasedList Class
- * <p>
- * Description:
  */
 
 import java.time.LocalDate;

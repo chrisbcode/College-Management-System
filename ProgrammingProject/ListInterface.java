@@ -1,11 +1,13 @@
 /**
- * @version 7/15/2026
+ * College Management System - ListInterface
  * <p>
- * Programming Project - College Management System - ArrayBasedList Class
+ * @version 7/16/2026
  * <p>
- * Description:
+ * Description: N/A
+ * <p>
  * @authors Christopher Bergsveinsson, Anh Vo, Maryam Anwari
  */
+
 public interface ListInterface<D> {
     void add(D item);
 

@@ -1,9 +1,10 @@
 /**
- * @version 7/15/2026
+ * College Management System - Node
  * <p>
- * Programming Project - College Management System - ArrayBasedList Class
+ * @version 7/16/2026
  * <p>
- * Description:
+ * Description: Standard node class.
+ * <p>
  * @authors Christopher Bergsveinsson, Anh Vo, Maryam Anwari
  */
 

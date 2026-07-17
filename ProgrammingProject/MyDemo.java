@@ -1,12 +1,12 @@
 /**
+ * College Management System - MyDemo
+ * <p>
+ * @version 7/16/2026
+ * <p>
+ * Description: test file
+ * <p>
  * @authors Christopher Bergsveinsson, Anh Vo, Maryam Anwari
- * @version 7/15/2026
- * <p>
- * Programming Project - College Management System - ArrayBasedList Class
- * <p>
- * Description:
  */
-
 
 public static void main(String[] args) {
     Student chris = new Student("Chris", 123, 2025, 3, 11);

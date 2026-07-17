@@ -1,17 +1,18 @@
 /**
- * @authors Christopher Bergsveinsson, Anh Vo, Maryam Anwari
+ * College Management System - Faculty
+ * <p>
  * @version 7/15/2026
  * <p>
- * Programming Project - College Management System - ArrayBasedList Class
+ * Description: Derived from employee, adds attributes to employee to simulate members of the faculty of a university.
  * <p>
- * Description:
+ * @authors Christopher Bergsveinsson, Anh Vo, Maryam Anwari
  */
 
 import java.time.LocalDate;
 import java.util.Scanner;
 
 public class Faculty extends Employee {
-    //instance variable
+
     private String department;
     private String username;
     private String password;
@@ -20,7 +21,7 @@ public class Faculty extends Employee {
 
     private static final int MAX_SECTIONS = 20;
 
-    //constructors
+
     public Faculty() {
         super();
         this.department = "";
@@ -43,7 +44,6 @@ public class Faculty extends Employee {
         super(fullName, facultyID);
     }
 
-    //setter & getters
     public void setDepartment(String facultyDepartment) {
         department = facultyDepartment;
     }

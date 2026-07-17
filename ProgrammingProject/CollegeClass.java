@@ -1,10 +1,11 @@
 /**
+ * College Management System - CollegeClass
+ * <p>
+ * @version 7/16/2026
+ * <p>
+ * Description: Uses a combination of queue, list and variables to simulate a class and its attributes.
+ * <p>
  * @authors Christopher Bergsveinsson, Anh Vo, Maryam Anwari
- * @version 7/15/2026
- * <p>
- * Programming Project - College Management System - ArrayBasedList Class
- * <p>
- * Description:
  */
 
 import java.time.LocalTime;

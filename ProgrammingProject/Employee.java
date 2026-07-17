@@ -1,18 +1,17 @@
 /**
+ * College Management System - Employee
+ * <p>
  * @version 7/15/2026
  * <p>
- * Programming Project - College Management System - ArrayBasedList Class
+ * Description: Derived from person, simulates an employee and their attributes.
  * <p>
- * Description:
  * @authors Christopher Bergsveinsson, Anh Vo, Maryam Anwari
  */
 
 public class Employee extends Person {
 
-    //instance variable
-    private int employeeId; //camel casing
+    private int employeeId;
 
-    //constructors
     public Employee() {
         super();
         this.employeeId = 0;
@@ -23,7 +22,6 @@ public class Employee extends Person {
         this.employeeId = employeeId;
     }
 
-    //setters and getters
     public void setEmployeeId(int newEmployeeId) {
         if (newEmployeeId > 0) {
             employeeId = newEmployeeId;

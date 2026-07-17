@@ -1,9 +1,10 @@
 /**
- * @version 7/15/2026
+ * College Management System - User
  * <p>
- * Programming Project - College Management System - ArrayBasedList Class
+ * @version 7/16/2026
  * <p>
- * Description:
+ * Description: Class that contains the attributes of a user of the CMS
+ * <p>
  * @authors Christopher Bergsveinsson, Anh Vo, Maryam Anwari
  */
 
