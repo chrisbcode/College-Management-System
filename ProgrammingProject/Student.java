@@ -1,17 +1,16 @@
-/**
- * College Management System - Student
- * <p>
- * @version 7/16/2026
- * <p>
- * Description: Class that contains attributes of a Student, with the classes the student is taking being an example.
- * <p>
- * @authors Christopher Bergsveinsson, Anh Vo, Maryam Anwari
- */
-
 import java.time.LocalDate;
 import java.util.Scanner;
 
-public class Student extends Person implements Comparable<Student> {
+/**
+ * @authors Christopher Bergsveinsson,
+ * @version 11/6/2025
+ * CSC 223 - Anwar Ahmad
+ * Every Tuesday and  Thursday 9:35am → 11:35am
+ * Programming Project - College Management System - Student Class
+ */
+
+public class Student extends Person implements Comparable<Student>
+{
     private int studentId;
     private ArrayBasedList<CollegeClass> collegeClasses = new ArrayBasedList<>(10);
     private String username;
@@ -38,7 +37,7 @@ public class Student extends Person implements Comparable<Student> {
         this.password = password;
     }
 
-    public Student(String newName, int newStudentId, int year, int month, int day) {
+    public Student(String newName, int newStudentId,  int year, int month, int day) {
         super(newName, year, month, day);
         this.studentId = newStudentId;
     }
@@ -54,7 +53,7 @@ public class Student extends Person implements Comparable<Student> {
     }
 
     public void setStudentId(int newStudentId) {
-        if (newStudentId > 0) {
+        if(newStudentId > 0) {
             studentId = newStudentId;
         }
     }
@@ -85,7 +84,7 @@ public class Student extends Person implements Comparable<Student> {
         System.out.println("Which class would you like to remove?");
         int option = keyboard.nextInt();
         CollegeClass collegeClass = collegeClasses.get(option - 1);
-        if (collegeClass != null) {
+        if(collegeClass != null) {
             collegeClass.removeStudent(this);
         }
     }
@@ -98,12 +97,11 @@ public class Student extends Person implements Comparable<Student> {
     public String toString() {
         return super.toString() + " | Student Id: " + studentId;
     }
-
     @Override
     public boolean equals(Object otherObject) {
         boolean areTheyEqual = false;
-        if (otherObject instanceof Student otherStudent) {
-            if (super.equals(otherObject) &&
+        if(otherObject instanceof Student otherStudent) {
+            if(super.equals(otherObject) &&
                     this.studentId == otherStudent.studentId) {
                 areTheyEqual = true;
             }
@@ -114,11 +112,11 @@ public class Student extends Person implements Comparable<Student> {
     @Override
     public int compareTo(Student other) {
 
-        int result = this.getName().compareTo(other.getName());
-        if (result != 0) {
-            return result;
-        }
-
-        return this.getBirthDate().compareTo(other.getBirthDate());
+    int result = this.getName().compareTo(other.getName());
+    if (result != 0) {
+    return result;
     }
-}
+
+    return this.getBirthDate().compareTo(other.getBirthDate());
+    }
+    }

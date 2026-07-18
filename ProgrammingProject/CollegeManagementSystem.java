@@ -80,26 +80,34 @@ public class CollegeManagementSystem {
                 Enter 3 to view the course list
                 Enter 4 to view the course details""");
         option = keyboard.nextInt();
+        keyboard.nextLine();
         if (option == 1) {
             System.out.println("Enter course name: ");
-            keyboard.nextLine();
             String courseName = keyboard.nextLine();
+
             System.out.println("Enter course abbreviation: ");
             String courseAbbreviation = keyboard.nextLine();
+
             System.out.println("Enter course ID: ");
             int courseID = keyboard.nextInt();
+
             System.out.println("Enter class' section number: ");
             int courseSectionNumber = keyboard.nextInt();
+            
             System.out.println("Enter class' day of the week: ");
             keyboard.nextLine();
             String courseDayOfWeek = keyboard.nextLine();
+
             System.out.println("Enter class' hour and minute seperated by spaces: ");
             int courseHour = keyboard.nextInt();
             int courseMinute = keyboard.nextInt();
+
             System.out.println("Enter the size of the class");
             int classSize = keyboard.nextInt();
+
             System.out.println("Enter the size of the class waitlist: ");
             int waitlistSize = keyboard.nextInt();
+            
             System.out.println("Enter course credits: ");
             int courseCredits = keyboard.nextInt();
 
