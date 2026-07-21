@@ -81,8 +81,7 @@ public class User {
     public boolean equals(Object otherObject) {
         boolean areTheyEqual = false;
         if (otherObject instanceof User otherStudent) {
-            User otherUser = (User) otherStudent;
-            if (otherUser.getUsername().equals(this.getUsername()) && otherUser.getPassword().equals(this.getPassword())) {
+            if (((User) otherStudent).getUsername().equals(this.getUsername()) && ((User) otherStudent).getPassword().equals(this.getPassword())) {
                 areTheyEqual = true;
             }
         }

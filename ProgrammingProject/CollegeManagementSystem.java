@@ -1,6 +1,7 @@
 /**
  * College Management System - CollegeManagementSystem
  * <p>
+ *
  * @version 7/16/2026
  * <p>
  * Description: Combines implementations of Stack, List, Queue, and other classes to simulate a system that manages college classes and their attributes, interacting with admin, faculty and student.
@@ -8,22 +9,22 @@
  * @authors Christopher Bergsveinsson, Anh Vo, Maryam Anwari
  */
 
+import java.io.FileNotFoundException;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Comparator;
+import java.io.File;
 import java.util.Scanner;
 
 
 public class CollegeManagementSystem {
-    private NodeBasedStack<Faculty> FacultyStack = new NodeBasedStack<>();
+    private final NodeBasedStack<Faculty> FacultyStack = new NodeBasedStack<>();
     private ArrayBasedList<CollegeClass> CollegeClasses;
 
-    private ArrayBasedList<Faculty> FacultyList = new ArrayBasedList<>(100);
-    private NodeBasedList<Student> StudentList = new NodeBasedList<>();
+    private final ArrayBasedList<Faculty> FacultyList = new ArrayBasedList<>(100);
+    private final NodeBasedList<Student> StudentList = new NodeBasedList<>();
 
-    private NodeBasedList<Faculty> PartTimeFacultyList = new NodeBasedList<>();
+    private final NodeBasedList<Faculty> PartTimeFacultyList = new NodeBasedList<>();
 
-    private NodeBasedList<User> UserList = new NodeBasedList<>();
+    private final NodeBasedList<User> UserList = new NodeBasedList<>();
 
     private String adminPassword, adminUsername;
 
@@ -39,6 +40,52 @@ public class CollegeManagementSystem {
 
 
     // system
+    public void preLoadClasses() {
+
+        if (this.CollegeClasses.size() > 0) {
+            System.out.println("Classes already present, preloading has failed.");
+            return;
+        }
+
+        try (Scanner fileScanner = new Scanner(new File("ProgrammingProject/classes.csv"))) {
+
+            fileScanner.nextLine();
+
+            while (fileScanner.hasNextLine()) {
+                String line = fileScanner.nextLine();
+                String[] classParams = line.split(",");
+
+                if (classParams.length == 10) {
+                    String ClassName = classParams[0];
+                    String ClassAbbreviation = classParams[1];
+                    int ClassID = Integer.parseInt(classParams[2]);
+                    int SectionNumber = Integer.parseInt(classParams[3]);
+                    String day = classParams[4];
+                    int hour = Integer.parseInt(classParams[5]);
+                    int minute = Integer.parseInt(classParams[6]);
+                    int sizeOfClass = Integer.parseInt(classParams[7]);
+                    int sizeOfWaitlist = Integer.parseInt(classParams[8]);
+                    int creditNumber = Integer.parseInt(classParams[9]);
+
+                    CollegeClasses.add(new CollegeClass(ClassName, ClassAbbreviation, ClassID, SectionNumber, day, hour, minute, sizeOfClass, sizeOfWaitlist, creditNumber));
+                }
+
+            }
+
+            if (CollegeClasses.size() > 0) {
+                System.out.println(CollegeClasses.size() + " classes loaded successfully, here is a list of all college classes preloaded:\n");
+                System.out.println(CollegeClasses.toString());
+            } else {
+                System.out.println("Classes not loaded, check CSV file.");
+            }
+
+
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
     public boolean validateAdmin(String adminUsername, String adminPassword) {
         return adminUsername.equals(this.adminUsername) && adminPassword.equals(this.adminPassword);
     }
@@ -93,7 +140,7 @@ public class CollegeManagementSystem {
 
             System.out.println("Enter class' section number: ");
             int courseSectionNumber = keyboard.nextInt();
-            
+
             System.out.println("Enter class' day of the week: ");
             keyboard.nextLine();
             String courseDayOfWeek = keyboard.nextLine();
@@ -107,23 +154,29 @@ public class CollegeManagementSystem {
 
             System.out.println("Enter the size of the class waitlist: ");
             int waitlistSize = keyboard.nextInt();
-            
+
             System.out.println("Enter course credits: ");
             int courseCredits = keyboard.nextInt();
 
             CollegeClasses.add(new CollegeClass(courseName, courseAbbreviation, courseID, courseSectionNumber, courseDayOfWeek, courseHour, courseMinute, classSize, waitlistSize, courseCredits));
             System.out.println("Course added successfully!");
+
         } else if (option == 2) {
             System.out.println(CollegeClasses.toString2());
             System.out.println("Enter class to remove: ");
-            option = keyboard.nextInt();
-            CollegeClasses.remove(CollegeClasses.get(option));
+            option = keyboard.nextInt() - 1;
+            CollegeClass selectedClass = CollegeClasses.get(option);
+            selectedClass.clearClass();
+            CollegeClasses.remove(selectedClass);
+
         } else if (option == 3) {
             System.out.println(CollegeClasses);
+
         } else if (option == 4) {
             for (int i = 0; i < CollegeClasses.size(); i++) {
                 System.out.println(CollegeClasses.get(i).toString2());
             }
+
         }
 
     }
@@ -212,12 +265,9 @@ public class CollegeManagementSystem {
         Scanner keyboard = new Scanner(System.in);
         int option;
 
-        if (this.StudentList == null) {
+        if (!StudentList.find(student)) {
             StudentList.add(student);
-            System.out.print("You successfully entered this college! Your assigned student ID is " + student.getStudentId());
-        } else if (!StudentList.find(student)) {
-            StudentList.add(student);
-            System.out.print("You successfully entered this college! Your assigned student ID is " + student.getStudentId());
+            System.out.print("You successfully entered this college! Your assigned student ID is " + student.getStudentId() + "\n");
         }
 
         boolean loggedIn = true;
@@ -245,6 +295,15 @@ public class CollegeManagementSystem {
                 System.out.println("Invalid option!");
             }
         }
+    }
+
+    // for faculty and user
+    public void addUser(String username, String password, Student student) {
+        UserList.add(new User(username, password, student));
+    }
+
+    public void addUser(String username, String password, Faculty faculty) {
+        UserList.add(new User(username, password, faculty));
     }
 
 

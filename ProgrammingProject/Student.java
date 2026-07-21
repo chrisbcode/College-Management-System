@@ -79,6 +79,11 @@ public class Student extends Person implements Comparable<Student>
     }
 
     public void removeClass() {
+        if(collegeClasses.size() == 0) {
+            System.out.println("There is nothing to remove!");
+            return;
+        }
+
         Scanner keyboard = new Scanner(System.in);
         System.out.println(collegeClasses.toString2());
         System.out.println("Which class would you like to remove?");
@@ -86,6 +91,10 @@ public class Student extends Person implements Comparable<Student>
         CollegeClass collegeClass = collegeClasses.get(option - 1);
         if(collegeClass != null) {
             collegeClass.removeStudent(this);
+            System.out.println("Removed student from this class");
+        }
+        else {
+            System.out.println("There is nothing to remove!");
         }
     }
 

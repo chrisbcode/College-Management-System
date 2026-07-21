@@ -17,7 +17,8 @@ public class Faculty extends Employee {
     private String username;
     private String password;
     private boolean fullTime;
-    private ArrayBasedList<CollegeClass> collegeClasses = new ArrayBasedList<>(5);
+    private ArrayBasedList<CollegeClass> collegeClasses = new ArrayBasedList<>(10);
+    boolean isUser;
 
     private static final int MAX_SECTIONS = 20;
 
@@ -68,12 +69,14 @@ public class Faculty extends Employee {
         return password;
     }
 
-    public void setUsername(String username) {
+    public void setUser(String username, String password) {
         this.username = username;
+        this.password = password;
+        isUser = true;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public boolean isUser() {
+        return isUser;
     }
 
     public void addClass(CollegeClass collegeClass) {
@@ -104,7 +107,7 @@ public class Faculty extends Employee {
     @Override
     public boolean equals(Object otherObject) {
         boolean areTheyEqual = false;
-        if (otherObject != null && otherObject instanceof Faculty otherFaculty) {
+        if (otherObject instanceof Faculty otherFaculty) {
             if (this.getName().equals(otherFaculty.getName()) && this.getEmployeeId() == otherFaculty.getEmployeeId()) {
                 areTheyEqual = true;
             }

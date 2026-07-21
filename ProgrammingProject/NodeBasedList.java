@@ -8,10 +8,9 @@
  * @authors Christopher Bergsveinsson, Anh Vo, Maryam Anwari
  */
 
-public class NodeBasedList<D> extends Object implements ListInterface<D> {
+public class NodeBasedList<D> implements ListInterface<D> {
 
     private Node list;
-
 
     public NodeBasedList() {
         super();
@@ -73,7 +72,7 @@ public class NodeBasedList<D> extends Object implements ListInterface<D> {
         return stackInfo.toString();
     }
 
-    private class Node extends Object {
+    private class Node {
 
         private D data;
         private Node link;

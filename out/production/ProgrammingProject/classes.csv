@@ -1,0 +1,32 @@
+ClassName, ClassAbbreviation, ClassID, SectionNumber, day, hour, minute, sizeOfClass, sizeOfWaitlist, creditNumber
+Introduction to Computer Science,CS,1001,1,Monday,9,0,30,0,3
+Calculus I,MATH,1002,1,Tuesday,10,30,25,0,4
+Composition II,ENG,1003,2,Wednesday,11,0,25,0,3
+General Chemistry I,CHEM,1004,1,Thursday,8,30,30,0,4
+Introductory Physics,PHYS,1005,1,Friday,13,0,30,0,4
+Data Structures and Algorithms,CS,1006,1,Monday,14,0,25,0,3
+Linear Algebra,MATH,1007,1,Wednesday,9,30,30,0,3
+World History to 1500,HIST,1008,3,Tuesday,11,0,35,0,3
+Introduction to Psychology,PSYC,1009,1,Thursday,14,30,40,0,3
+Microeconomics,ECON,1010,2,Monday,10,0,35,0,3
+Macroeconomics,ECON,1011,1,Wednesday,13,30,35,0,3
+Object-Oriented Programming,CS,1012,1,Friday,10,0,25,0,3
+Discrete Mathematics,MATH,1013,1,Tuesday,13,0,30,0,3
+Organic Chemistry I,CHEM,1014,1,Monday,8,0,20,0,4
+Public Speaking,COMM,1015,4,Thursday,10,0,20,0,3
+Introduction to Sociology,SOC,1016,1,Wednesday,15,0,35,0,3
+Principles of Marketing,MKTG,1017,1,Tuesday,15,0,30,0,3
+Financial Accounting,ACCT,1018,2,Friday,9,0,30,0,3
+Database Management Systems,CS,1019,1,Monday,11,30,25,0,3
+Operating Systems,CS,1020,1,Wednesday,14,0,25,0,3
+Cell Biology,BIOL,1021,1,Thursday,9,0,25,0,4
+Ethics in Information Technology,PHIL,1022,1,Friday,11,30,30,0,3
+Art History: Renaissance to Modern,ART,1023,1,Tuesday,8,30,30,0,3
+American Government,POLS,1024,2,Monday,15,30,35,0,3
+Software Engineering,CS,1025,1,Wednesday,10,0,20,0,3
+Statistical Methods,STAT,1026,1,Thursday,13,0,30,0,3
+Introduction to Philosophy,PHIL,1027,3,Friday,14,0,30,0,3
+Web Development Essentials,CS,1028,1,Tuesday,14,0,25,0,3
+Human Anatomy and Physiology,BIOL,1029,1,Monday,13,0,25,0,4
+Computer Networks,CS,1030,1,Thursday,11,0,25,0,3
+

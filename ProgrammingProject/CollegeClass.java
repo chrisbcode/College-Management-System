@@ -158,13 +158,34 @@ public class CollegeClass {
         }
     }
 
+    public void clearClass() {
+       while(StudentsInClass.iterator().hasNext()) {
+           Student student = StudentsInClass.iterator().next();
+           student.removeClass(this);
+           StudentsInClass.remove(student);
+       }
+       while(StudentWaitlist.size() > 0) {
+           try { Student student = StudentWaitlist.dequeue();
+           student.removeClass(this);}
+           catch (QueueEmptyException _) { }
+       }
+
+       if(Professor != null) {
+           Professor.removeClass(this);
+           Professor = null;
+       }
+
+       StudentsInClass = new ArrayBasedList<>();
+       StudentWaitlist = new ClassWaitlist<>();
+    }
+
     @Override
     public String toString() {
         return "Course: " + ClassAbbreviation + ClassID + " (" + ClassName + ") | Section:" + SectionNumber + " | Date: " + day + " | Time:" + ClassTime + " | Credits:" + creditNumber + "\nProfessor: " + Professor;
     }
 
     public String toString2() {
-        return "In Class:\n" + this.StudentsInClass.toString() + "\nIn Waitlist:\n" + this.StudentWaitlist.toString();
+        return ClassAbbreviation + ClassID + "\nIn Class:\n" + this.StudentsInClass.toString() + "\nIn Waitlist:\n" + this.StudentWaitlist.toString();
     }
 
 }

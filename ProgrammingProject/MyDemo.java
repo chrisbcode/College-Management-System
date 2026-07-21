@@ -9,17 +9,19 @@
  */
 
 public static void main(String[] args) {
-    Student chris = new Student("Chris", 123, 2025, 3, 11);
 
-    CollegeClass collegeClass = new CollegeClass("CompSci", "CSC", 123, 5, "Thursday", 9, 35, 35, 30, 45);
+    Scanner keyboard = new Scanner(System.in);
 
-    collegeClass.addStudent(chris);
+    System.out.println("Enter your username: ");
+    String username = keyboard.nextLine();
+    System.out.println("Enter your password: ");
+    String password = keyboard.nextLine();
 
-    boolean FT = false;
-    collegeClass.setProfessor(new Faculty("William", 123, "CompSci", FT));
+    NodeBasedList<User> UserList = new NodeBasedList<>();
+    UserList.add(new User(username, password));
+    System.out.println(UserList);
+    System.out.println(UserList.find(new User("John1", "Doe1")));
+    System.out.println(UserList.find2(new User("John1", "Doe1")));
 
-    chris.removeClass();
-
-    System.out.println(collegeClass.toString2());
 
 }
