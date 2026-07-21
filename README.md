@@ -9,8 +9,9 @@
 * Queue was given a custom implementation in ClassWaitlist, simulating the waitlist when a class is full when enrolling in college classes.
 
 ## Features
-* Console UI allows the user to interact directly or indirectly with every class and structure, as an admin, student or member of the faculty.
-**
-**
+* Console UI allows the user to interact directly or indirectly with every class and structure, as an admin, student or member of the faculty. Interacting with the UI as:
+  * an admin allows for the complete management of classes and faculty
+  * a student allows for logging on, creating an account, and managing, removing or viewing classes.
+  * a member of the faculty allows for creating an account tied to your existing faculty profile, reassigning one of your classes (assigned by admin) to a part-time member of faculty, and viewing your assigned classes.
 * CSV file parsing has been added, with pre-loaded AI-generated CollegeClass arguments already located in the file, allowing for the user to load these on UI startup.
-** This CSV file can be modified to add more or less instances of CollegeClass, as long as the user considers limits on said instances established in the sizeOfCollegeClassList parameter.
+  * This CSV file can be modified to add more or less instances of CollegeClass, as long as the user considers limits on said instances established in the sizeOfCollegeClassList parameter.
