@@ -15,8 +15,3 @@
   * a member of the faculty allows for creating an account tied to your existing faculty profile, reassigning one of your classes (assigned by admin) to a part-time member of faculty, and viewing your assigned classes.
 * CSV file parsing has been added, with pre-loaded AI-generated CollegeClass arguments already located in the file, allowing for the user to load these on UI startup.
   * This CSV file can be modified to add more or less instances of CollegeClass, as long as the user considers limits on said instances established in the sizeOfCollegeClassList parameter.
-
-## Cloning this repository
-* ```bash git clone [https://github.com/your-username/ProgrammingProject.git](https://github.com/your-username/ProgrammingProject.git) cd ProgrammingProject
-
-
