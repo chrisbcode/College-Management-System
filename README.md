@@ -17,6 +17,6 @@
   * This CSV file can be modified to add more or less instances of CollegeClass, as long as the user considers limits on said instances established in the sizeOfCollegeClassList parameter.
 
 ## Cloning this repository
-* ```bash
-git clone [https://github.com/your-username/ProgrammingProject.git](https://github.com/your-username/ProgrammingProject.git)
-cd ProgrammingProject
+* ```bash git clone [https://github.com/your-username/ProgrammingProject.git](https://github.com/your-username/ProgrammingProject.git) cd ProgrammingProject
+
+
