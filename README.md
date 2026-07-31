@@ -1,4 +1,4 @@
-# Programming Project - College Management System (CMS)
+# Programming Project - College Management System (CMS) by Christopher Bergsveinsson, Anh Vo and Maryam Anwari
 
 * This was the final project for my Computer Science - Data Structures and Analysis of Algorithms class in the fall of 2025, featuring classes made from scratch simulating and/or being different roles and data structures, like Stack, List and Queue.
 * These classes and an added CSV file and the ability to parse such a file was combined to create the CMS and the console UI, ensuring a clean and fast user experience, whether they decide to take on the role of admin, student or faculty.
