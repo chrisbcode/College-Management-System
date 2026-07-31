@@ -1,7 +1,7 @@
 # Programming Project - College Management System (CMS)
 
-* This was the final project for my Computer Science - Data Structures and Analysis of Algorithms class in the fall of 2025, featuring classes simulating and/or being different roles and data structures, like Stack, List and Queue.
-* Orginally, me and 2 teammates worked on this project, turned in a version stored locally on one of their computers and received an A+, but since then I have worked on and completed the version I have.
+* This was the final project for my Computer Science - Data Structures and Analysis of Algorithms class in the fall of 2025, featuring classes made from scratch simulating and/or being different roles and data structures, like Stack, List and Queue.
+* These classes and an added CSV file and the ability to parse such a file was combined to create the CMS and the console UI, ensuring a clean and fast user experience, whether they decide to take on the role of admin, student or faculty.
 
 ## Data Structures Implemented
 * List was implemented in two ways, appearing in the forms of ArrayBasedList and NodeBasedList to store faculty, students and users, with the implementation chosen reflecting the dynamic and static limits of each class.
